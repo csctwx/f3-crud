@@ -5,11 +5,52 @@
         <title>{{ @site }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
-        <link href="../../ui/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <!-- <link href="../../ui/css/bootstrap.min.css" rel="stylesheet" media="screen"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link href="../../ui/css/crud.css" rel="stylesheet" media="screen">
     </head>
 
     <body>
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="{{ @BASE.'/' }}">Battat</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="{{ @BASE.'/' }}">Home</a></li>
+              <li><a href="{{ @BASE.'/' }}">Users</a></li>              
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">List Products</a></li>
+                  <li><a href="#">Create Product</a></li>                  
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Brands
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">List Brands</a></li>
+                  <li><a href="#">Create Brand</a></li>                  
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">PackInfos
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">List PackInfos</a></li>
+                  <li><a href="#">Create PackInfo</a></li>                  
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <!-- <li><a href="{{ @BASE.'/' }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
+              <!-- <li><a href="{{ @BASE.'/' }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+              <li><a href="{{ @BASE.'/' }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+          </div>
+        </nav>
 
         <div class="container">
 
