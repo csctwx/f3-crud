@@ -21,6 +21,10 @@ class User extends DB\SQL\Mapper {
         $this->copyTo('POST');
     }
 
+    public function getByName($name) {
+        $this->load(array('username=?', $name));
+    }
+
     public function edit($id) {
         $this->load(array('id=?',$id));
         $this->copyFrom('POST');

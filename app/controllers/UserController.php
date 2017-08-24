@@ -1,6 +1,36 @@
 <?php
 
 class UserController extends Controller {
+    function render(){
+
+        // $template=new Template;
+        // echo $template->render('user/login.htm');
+
+        $this->f3->set('page_head','Login');
+        $this->f3->set('message', '');
+        $this->f3->set('view','user/login.htm');
+    }    
+
+    function authenticate() {
+
+        $username = $this->f3->get('POST.username');
+        $password = $this->f3->get('POST.password');
+
+        $user = new User($this->db);
+        $user->getByName($username);
+
+        if($user->dry()) {
+            $this->f3->reroute('/login');
+        }
+
+        if(password_verify($password, $user->password)) {   
+            $this->f3->set('SESSION.user', $user->username);
+            echo $this->f3->get('SESSION.user'); die();         
+            $this->f3->reroute('/');
+        } else {            
+            $this->f3->reroute('/login');
+        }
+    }
 
 	public function index()
     {
