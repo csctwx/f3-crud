@@ -3,12 +3,15 @@
 class UserController extends Controller {
     function render(){
 
-        // $template=new Template;
-        // echo $template->render('user/login.htm');
-
         $this->f3->set('page_head','Login');
         $this->f3->set('message', '');
         $this->f3->set('view','user/login.htm');
+    }    
+
+    function logout(){   
+
+        $this->f3->set('SESSION.user', null);          
+        $this->f3->reroute('/login');
     }    
 
     function authenticate() {
@@ -24,8 +27,8 @@ class UserController extends Controller {
         }
 
         if(password_verify($password, $user->password)) {   
-            $this->f3->set('SESSION.user', $user->username);
-            echo $this->f3->get('SESSION.user'); die();         
+            $this->f3->set('SESSION.user', $user->username);     
+            $this->f3->set('SESSION.role', $user->role);       
             $this->f3->reroute('/');
         } else {            
             $this->f3->reroute('/login');
@@ -42,7 +45,9 @@ class UserController extends Controller {
 	}
 
     public function create()
-    {
+    {   if($this->f3->get('role') == 3 ){
+          $this->f3->reroute('/');
+        }
         if($this->f3->exists('POST.create'))
         {
             $user = new User($this->db);

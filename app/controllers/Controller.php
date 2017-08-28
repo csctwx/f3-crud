@@ -5,12 +5,13 @@ class Controller {
 	protected $f3;
 	protected $db;
 
-	function beforeroute() {	
-	//var_dump($this->f3->get('SESSION.user')); echo $this->f3->get('PARAMS')[0]; die();	
+	function beforeroute() {		
 		if(($this->f3->get('SESSION.user') === null) && ('/login' != $this->f3->get('PARAMS')[0]) && ('/authenticate' != $this->f3->get('PARAMS')[0])) {
             $this->f3->reroute('/login');
             exit;
         }
+        
+        $this->f3->set('role',$this->f3->get('SESSION.role'));
 		$this->f3->set('message','');
 	}
 
