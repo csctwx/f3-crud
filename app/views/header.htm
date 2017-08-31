@@ -18,7 +18,7 @@
             </div>
             <check if="{{ @page_head != 'Login' }}">
               <ul class="nav navbar-nav">  
-                <check if="{{ @role == 1 }}">                                 
+                <check if="{{ @role == 0 }}">                                 
                   <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="{{ @BASE.'/' }}">Users
                     <span class="caret"></span></a>
@@ -33,7 +33,7 @@
                   <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="#">List Products</a></li>
-                    <check if="{{ @role != 3 }}"> 
+                    <check if="{{ @role != 2 }}"> 
                       <li><a href="#">Create Product</a></li>                  
                     </check>
                   </ul>
@@ -43,7 +43,7 @@
                   <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="#">List Brands</a></li>
-                    <check if="{{ @role != 3 }}"> 
+                    <check if="{{ @role != 2 }}"> 
                       <li><a href="#">Create Brand</a></li>                  
                     </check>
                   </ul>
@@ -53,7 +53,7 @@
                   <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="#">List PackInfos</a></li>
-                    <check if="{{ @role != 3 }}"> 
+                    <check if="{{ @role != 2 }}"> 
                       <li><a href="#">Create PackInfo</a></li>                  
                     </check>
                   </ul>

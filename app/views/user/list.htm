@@ -1,8 +1,8 @@
 <table width="600" cellpadding="5" class="table table-hover table-bordered">
     <thead>
     <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Password</th>
+        <th scope="col">Username</th>
+        <!-- <th scope="col">Password</th> -->
         <th scope="col">Role</th>
         <th scope="col">Status</th>
         <th scope="col">Action</th>
@@ -12,10 +12,9 @@
     <tbody>
     <repeat group="{{ @users }}" value="{{ @user }}">
         <tr>
-            <td>{{ trim(@user.username) }}</td>
-            <td>{{ trim(@user.password) }}</td>
-            <td>{{ trim(@user.role) }}</td>
-            <td>{{ trim(@user.status) }}</td>
+            <td>{{ trim(@user.username) }}</td>            
+            <td>{{ trim(@roles[@user.role]) }}</td>
+            <td>{{ trim(@statuses[@user.status]) }}</td>
             <td><a href="{{ @BASE.'/user/update/'. @user.id }}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
                 &nbsp; <a href="{{ @BASE.'/user/delete/'. @user.id }}" class="btn btn-danger"><i class="icon-remove icon-white"></i>
                     Delete</a></td>
@@ -23,5 +22,4 @@
         </tr>
     </repeat>
     </tbody>
-
 </table>

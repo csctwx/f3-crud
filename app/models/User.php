@@ -13,6 +13,7 @@ class User extends DB\SQL\Mapper {
 
     public function add() {
         $this->copyFrom('POST');
+        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
         $this->save();
     }
 
@@ -27,7 +28,7 @@ class User extends DB\SQL\Mapper {
 
     public function edit($id) {
         $this->load(array('id=?',$id));
-        $this->copyFrom('POST');
+        $this->copyFrom('POST');        
         $this->update();
     }
 

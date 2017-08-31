@@ -45,7 +45,7 @@ class UserController extends Controller {
 	}
 
     public function create()
-    {   if($this->f3->get('role') == 3 ){
+    {   if($this->f3->get('role') == 2 ){
           $this->f3->reroute('/');
         }
         if($this->f3->exists('POST.create'))
