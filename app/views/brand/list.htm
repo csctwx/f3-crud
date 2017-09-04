@@ -1,0 +1,27 @@
+<ul class="nav navbar-nav navbar-right sub-nav">              
+  <li><a href="{{ @BASE.'/brand/create' }}" class="btn btn-primary"><i class="icon-edit icon-white"></i>Create</a></li>  
+</ul>
+<table width="600" cellpadding="5" class="table table-hover table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">Brand</th>        
+        <th scope="col">Prefix</th>
+        <th scope="col">Last Used Number</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <repeat group="{{ @brands }}" value="{{ @brand }}">
+        <tr>
+            <td>{{ trim(@brand.brand) }}</td>            
+            <td>{{ trim(@brand.prefix) }}</td>
+            <td>{{ trim(@brand.lastnumber) }}</td>
+            <td><a href="{{ @BASE.'/brand/update/'. @brand.id }}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
+                &nbsp; <a href="{{ @BASE.'/brand/delete/'. @brand.id }}" class="btn btn-danger"><i class="icon-remove icon-white"></i>
+                    Delete</a></td>
+        </tr>
+    </repeat>
+    </tbody>
+</table>
+<!-- <include href="brand/nav.htm" /> -->

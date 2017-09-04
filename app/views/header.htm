@@ -7,7 +7,7 @@
         <!-- Bootstrap -->
         <!-- <link href="../../ui/css/bootstrap.min.css" rel="stylesheet" media="screen"> -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link href="../../ui/css/crud.css" rel="stylesheet" media="screen">
+        <link href="../../ui/css/upc.css" rel="stylesheet" media="screen">
     </head>
 
     <body>
@@ -17,8 +17,12 @@
               <a class="navbar-brand" href="{{ @BASE.'/' }}">Battat</a>
             </div>
             <check if="{{ @page_head != 'Login' }}">
-              <ul class="nav navbar-nav">  
-                <check if="{{ @role == 0 }}">                                 
+              <ul class="nav navbar-nav">                  
+                <li class="active"><a href="{{ @BASE.'/itmes' }}">Items</a></li> 
+                <li><a href="{{ @BASE.'/brands' }}">Brands</a></li>    
+                <li><a href="{{ @BASE.'/item-number-extensions' }}">Item Number extensions</a></li>    
+                <li><a href="{{ @BASE.'/art-work-languages' }}">Art Work Languages</a></li>   
+                <check if="{{ @role == 0 }}">                              
                   <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="{{ @BASE.'/' }}">Users
                     <span class="caret"></span></a>
@@ -27,37 +31,7 @@
                       <li><a href="{{ @BASE.'/user/create' }}">Create User</a></li>                  
                     </ul>
                   </li>  
-                </check>            
-                <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products
-                  <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">List Products</a></li>
-                    <check if="{{ @role != 2 }}"> 
-                      <li><a href="#">Create Product</a></li>                  
-                    </check>
-                  </ul>
-                </li>
-                <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Brands
-                  <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">List Brands</a></li>
-                    <check if="{{ @role != 2 }}"> 
-                      <li><a href="#">Create Brand</a></li>                  
-                    </check>
-                  </ul>
-                </li>
-                <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">PackInfos
-                  <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">List PackInfos</a></li>
-                    <check if="{{ @role != 2 }}"> 
-                      <li><a href="#">Create PackInfo</a></li>                  
-                    </check>
-                  </ul>
-                </li>
+                </check>                            
               </ul>
             </check>
             <ul class="nav navbar-nav navbar-right">              
