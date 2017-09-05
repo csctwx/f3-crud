@@ -1,16 +1,23 @@
 <?php
 
 /*
-	Copyright (c) 2009-2012 F3::Factory/Bong Cosca, All rights reserved.
 
-	This file is part of the Fat-Free Framework (http://fatfree.sf.net).
+	Copyright (c) 2009-2017 F3::Factory/Bong Cosca, All rights reserved.
 
-	THE SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF
-	ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
-	IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR
-	PURPOSE.
+	This file is part of the Fat-Free Framework (http://fatfreeframework.com).
 
-	Please see the license.txt file for more information.
+	This is free software: you can redistribute it and/or modify it under the
+	terms of the GNU General Public License as published by the Free Software
+	Foundation, either version 3 of the License, or later.
+
+	Fat-Free Framework is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+	General Public License for more details.
+
+	You should have received a copy of the GNU General Public License along
+	with Fat-Free Framework.  If not, see <http://www.gnu.org/licenses/>.
+
 */
 
 namespace Web;
@@ -18,27 +25,24 @@ namespace Web;
 //! OpenID consumer
 class OpenID extends \Magic {
 
-	//@{ Error messages
-	const
-		E_EndPoint='Unable to find OpenID provider';
-	//@}
-
-	var
+	protected
+		//! OpenID provider endpoint URL
+		$url,
 		//! HTTP request parameters
-		$args=array();
+		$args=[];
 
 	/**
-		Determine OpenID provider
-		@return string|FALSE
-		@param $proxy string
+	*	Determine OpenID provider
+	*	@return string|FALSE
+	*	@param $proxy string
 	**/
 	protected function discover($proxy) {
 		// Normalize
-		if (!preg_match('/https?:\/\//i',$this->args['identity']))
-			$this->args['identity']='http://'.$this->args['identity'];
-		$url=parse_url($this->args['identity']);
+		if (!preg_match('/https?:\/\//i',$this->args['endpoint']))
+			$this->args['endpoint']='http://'.$this->args['endpoint'];
+		$url=parse_url($this->args['endpoint']);
 		// Remove fragment; reconnect parts
-		$this->args['identity']=$url['scheme'].'://'.
+		$this->args['endpoint']=$url['scheme'].'://'.
 			(isset($url['user'])?
 				($url['user'].
 				(isset($url['pass'])?(':'.$url['pass']):'').'@'):'').
@@ -46,7 +50,7 @@ class OpenID extends \Magic {
 			(isset($url['query'])?('?'.$url['query']):'');
 		// HTML-based discovery of OpenID provider
 		$req=\Web::instance()->
-			request($this->args['identity'],array('proxy'=>$proxy));
+			request($this->args['endpoint'],['proxy'=>$proxy]);
 		if (!$req)
 			return FALSE;
 		$type=array_values(preg_grep('/Content-Type:/',$req['headers']));
@@ -59,8 +63,9 @@ class OpenID extends \Magic {
 			$svc=$xrds['XRD']['Service'];
 			if (isset($svc[0]))
 				$svc=$svc[0];
+			$svc_type=is_array($svc['Type'])?$svc['Type']:array($svc['Type']);
 			if (preg_grep('/http:\/\/specs\.openid\.net\/auth\/2.0\/'.
-					'(?:server|signon)/',$svc['Type'])) {
+					'(?:server|signon)/',$svc_type)) {
 				$this->args['provider']=$svc['URI'];
 				if (isset($svc['LocalID']))
 					$this->args['localidentity']=$svc['LocalID'];
@@ -85,7 +90,7 @@ class OpenID extends \Magic {
 						preg_match_all('/\b(rel|href)\h*=\h*'.
 							'(?:"(.+?)"|\'(.+?)\')/s',$parts[1],$attr,
 							PREG_SET_ORDER)) {
-						$node=array();
+						$node=[];
 						foreach ($attr as $kv)
 							$node[$kv[1]]=isset($kv[2])?$kv[2]:$kv[3];
 						if (isset($node['rel']) &&
@@ -111,6 +116,7 @@ class OpenID extends \Magic {
 		}
 		elseif (isset($this->args['server'])) {
 			// OpenID 1.1
+			$this->args['ns']='http://openid.net/signon/1.1';
 			if (isset($this->args['delegate']))
 				$this->args['identity']=$this->args['delegate'];
 		}
@@ -128,86 +134,112 @@ class OpenID extends \Magic {
 	}
 
 	/**
-		Initiate OpenID authentication sequence; Return FALSE on failure
-		or redirect to OpenID provider URL
-		@return bool
-		@param $proxy string
+	*	Initiate OpenID authentication sequence; Return FALSE on failure
+	*	or redirect to OpenID provider URL
+	*	@return bool
+	*	@param $proxy string
+	*	@param $attr array
+	*	@param $reqd string|array
 	**/
-	function auth($proxy=NULL) {
+	function auth($proxy=NULL,$attr=[],array $reqd=NULL) {
 		$fw=\Base::instance();
-		$root=$fw->get('SCHEME').'://'.$fw->get('HOST');
+		$root=$fw->SCHEME.'://'.$fw->HOST;
 		if (empty($this->args['trust_root']))
-			$this->args['trust_root']=$root.$fw->get('BASE').'/';
+			$this->args['trust_root']=$root.$fw->BASE.'/';
 		if (empty($this->args['return_to']))
 			$this->args['return_to']=$root.$_SERVER['REQUEST_URI'];
 		$this->args['mode']='checkid_setup';
-		if ($url=$this->discover($proxy)) {
-			$var=array();
+		if ($this->url=$this->discover($proxy)) {
+			if ($attr) {
+				$this->args['ns.ax']='http://openid.net/srv/ax/1.0';
+				$this->args['ax.mode']='fetch_request';
+				foreach ($attr as $key=>$val)
+					$this->args['ax.type.'.$key]=$val;
+				$this->args['ax.required']=is_string($reqd)?
+					$reqd:implode(',',$reqd);
+			}
+			$var=[];
 			foreach ($this->args as $key=>$val)
 				$var['openid.'.$key]=$val;
-			$fw->reroute($url.'?'.http_build_query($var));
+			$fw->reroute($this->url.'?'.http_build_query($var));
 		}
 		return FALSE;
 	}
 
 	/**
-		Return TRUE if OpenID verification was successful
-		@return bool
-		@param $proxy string
+	*	Return TRUE if OpenID verification was successful
+	*	@return bool
+	*	@param $proxy string
 	**/
 	function verified($proxy=NULL) {
-		foreach ($_GET as $key=>$val)
-			if (preg_match('/^openid_(.+)/',$key,$match))
-				$this->args[$match[1]]=$val;
-		if ($url=$this->discover($proxy)) {
+		preg_match_all('/(?<=^|&)openid\.([^=]+)=([^&]+)/',
+			$_SERVER['QUERY_STRING'],$matches,PREG_SET_ORDER);
+		foreach ($matches as $match)
+			$this->args[$match[1]]=urldecode($match[2]);
+		if (isset($this->args['mode']) &&
+			$this->args['mode']!='error' &&
+			$this->url=$this->discover($proxy)) {
 			$this->args['mode']='check_authentication';
-			$var=array();
+			$var=[];
 			foreach ($this->args as $key=>$val)
 				$var['openid.'.$key]=$val;
 			$req=\Web::instance()->request(
-				$url,
-				array(
+				$this->url,
+				[
 					'method'=>'POST',
 					'content'=>http_build_query($var),
 					'proxy'=>$proxy
-				)
+				]
 			);
-			return preg_match('/is_valid:true/i',$req['body']);
+			return (bool)preg_match('/is_valid:true/i',$req['body']);
 		}
 		return FALSE;
 	}
 
 	/**
-		Return TRUE if OpenID request parameter exists
-		@return bool
-		@param $key string
+	*	Return OpenID response fields
+	*	@return array
+	**/
+	function response() {
+		return $this->args;
+	}
+
+	/**
+	*	Return TRUE if OpenID request parameter exists
+	*	@return bool
+	*	@param $key string
 	**/
 	function exists($key) {
 		return isset($this->args[$key]);
 	}
 
 	/**
-		Bind value to OpenID request parameter
-		@return string
-		@param $key string
-		@param $val string
+	*	Bind value to OpenID request parameter
+	*	@return string
+	*	@param $key string
+	*	@param $val string
 	**/
 	function set($key,$val) {
 		return $this->args[$key]=$val;
 	}
 
 	/**
-		Return value of OpenID request parameter
-		@return mixed
-		@param $key string
+	*	Return value of OpenID request parameter
+	*	@return mixed
+	*	@param $key string
 	**/
-	function get($key) {
-		return isset($this->args[$key])?$this->args[$key]:NULL;
+	function &get($key) {
+		if (isset($this->args[$key]))
+			$val=&$this->args[$key];
+		else
+			$val=NULL;
+		return $val;
 	}
 
 	/**
-		Remove OpenID request parameter
-		@param $key
+	*	Remove OpenID request parameter
+	*	@return NULL
+	*	@param $key
 	**/
 	function clear($key) {
 		unset($this->args[$key]);

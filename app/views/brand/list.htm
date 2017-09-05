@@ -1,27 +1,49 @@
-<ul class="nav navbar-nav navbar-right sub-nav">              
-  <li><a href="{{ @BASE.'/brand/create' }}" class="btn btn-primary"><i class="icon-edit icon-white"></i>Create</a></li>  
+<ul class="nav navbar-nav sub-nav">  
+  <check  if="{{ @role != 2 }}">            
+    <li><a href="{{ @BASE.'/brand/create' }}" class="btn btn-primary"><i class="icon-edit icon-white"></i>Create</a></li>  
+  </check>
 </ul>
-<table width="600" cellpadding="5" class="table table-hover table-bordered">
-    <thead>
-    <tr>
-        <th scope="col">Brand</th>        
-        <th scope="col">Prefix</th>
-        <th scope="col">Last Used Number</th>
-        <th scope="col">Action</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <repeat group="{{ @brands }}" value="{{ @brand }}">
-        <tr>
-            <td>{{ trim(@brand.brand) }}</td>            
-            <td>{{ trim(@brand.prefix) }}</td>
-            <td>{{ trim(@brand.lastnumber) }}</td>
-            <td><a href="{{ @BASE.'/brand/update/'. @brand.id }}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
-                &nbsp; <a href="{{ @BASE.'/brand/delete/'. @brand.id }}" class="btn btn-danger"><i class="icon-remove icon-white"></i>
-                    Delete</a></td>
+<table data-toggle="table"       
+       data-query-params="queryParams"
+       data-pagination="true"
+       data-search="true"       
+       class="table table-striped">
+    <thead>    
+    <tr class="row">
+            <th data-field="brand"  data-sortable="true"  class="col-sm-5">Brand</th>        
+            <th data-field="prefix"  data-sortable="true" class="col-sm-2">Prefix</th>
+            <th data-field="lastnumber"  data-sortable="true" class="col-sm-2">Last Used Number</th>
+            <check  if="{{ @role != 2 }}" class="col-sm-3">
+                <th>Action</th>
+            </check>
         </tr>
-    </repeat>
+    </thead>
+    <tbody>
+        <repeat group="{{ @brands }}" value="{{ @brand }}">
+            <tr>
+                <td>{{ trim(@brand.brand) }}</td>            
+                <td>{{ trim(@brand.prefix) }}</td>
+                <td>{{ trim(@brand.lastnumber) }}</td>
+                <check  if="{{ @role != 2 }}">
+                    <td>
+                        <a href="{{ @BASE.'/brand/update/'. @brand.id }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp; Edit</a>
+                        &nbsp; &nbsp;&nbsp;&nbsp;
+                        <a href="{{ @BASE.'/brand/delete/'. @brand.id }}"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>&nbsp; Delete</a>
+                    </td>
+                </check>
+            </tr>
+        </repeat>        
     </tbody>
 </table>
-<!-- <include href="brand/nav.htm" /> -->
+<script type="text/javascript">
+    function queryParams() {
+        return {
+            type: 'owner',
+            sort: 'updated',
+            direction: 'desc',
+            per_page: 100,
+            page: 1
+        };
+    }
+</script>
+

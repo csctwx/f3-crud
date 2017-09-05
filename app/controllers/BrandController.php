@@ -1,6 +1,10 @@
 <?php
 
-class BrandController extends Controller {    
+class BrandController extends Controller { 
+    function beforeroute() {        
+        parent::beforeroute();
+        $this->f3->set('menu','brand');
+    }   
 
 	public function index()
     {
@@ -13,14 +17,14 @@ class BrandController extends Controller {
 
     public function create()
     {   if($this->f3->get('role') == 2 ){
-          $this->f3->reroute('/brand/list');
+          $this->f3->reroute('/brands');
         }
         if($this->f3->exists('POST.create'))
         {
             $brand = new Brand($this->db);
             $brand->add();
 
-            $this->f3->reroute('/success/New Brand Created');
+            $this->f3->reroute('/brand/success/New Brand Created');
         } else
         {
             $this->f3->set('page_head','Create Brand');
@@ -56,6 +60,6 @@ class BrandController extends Controller {
             $brand->delete($this->f3->get('PARAMS.id'));
         }
 
-        $this->f3->reroute('/success/Brand Deleted');
+        $this->f3->reroute('/brand/success/Brand Deleted');
     }
 }
