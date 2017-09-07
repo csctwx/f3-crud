@@ -1,8 +1,12 @@
 <?php
 
 class UserController extends Controller {
-    function render(){
+    function beforeroute() {        
+        parent::beforeroute();
+        $this->f3->set('menu','user');
+    }   
 
+    function render(){
         $this->f3->set('page_head','Login');
         $this->f3->set('message', '');
         $this->f3->set('view','user/login.htm');
@@ -70,13 +74,33 @@ class UserController extends Controller {
         if($this->f3->exists('POST.update'))
         {
             $user->edit($this->f3->get('POST.id'));
-            $this->f3->reroute('/success/User Updated');
+            $this->f3->reroute('/user/success/User Updated');
         } else
         {
             $user->getById($this->f3->get('PARAMS.id'));
-            $this->f3->set('user',$user);
+            //$this->f3->set('user',$user);
             $this->f3->set('page_head','Update User');
             $this->f3->set('view','user/update.htm');
+        }
+
+    }
+
+    public function reset()
+    {
+
+        $user = new User($this->db);
+
+        if($this->f3->exists('POST.reset'))
+        {
+            $user->myreset($this->f3->get('POST.id'));
+            $this->f3->reroute('/user/success/User Reseted');
+        } else
+        {
+            $user->getById($this->f3->get('PARAMS.id'));
+            $this->f3->set('POST.password','');
+            //$this->f3->set('user',$user);
+            $this->f3->set('page_head','Reset Password');
+            $this->f3->set('view','user/reset.htm');
         }
 
     }

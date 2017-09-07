@@ -32,6 +32,16 @@ class User extends DB\SQL\Mapper {
         $this->update();
     }
 
+    public function myreset($id) {
+        $this->load(array('id=?',$id));
+        $this->copyFrom('POST',function($val) {
+                            // the 'POST' array is passed to our callback function
+                            return array_intersect_key($val, array_flip(array('username','password')));
+                        }); 
+        $this->password = password_hash($this->password, PASSWORD_DEFAULT);     
+        $this->update();
+    }
+
     public function delete($id) {
         $this->load(array('id=?',$id));
         $this->erase();

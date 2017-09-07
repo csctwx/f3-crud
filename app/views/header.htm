@@ -6,10 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="../../ui/css/bootstrap-table.css">
-        <link href="../../ui/css/upc.css" rel="stylesheet" media="screen">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>    
-        <script src="../../ui/js/bootstrap-table.js"></script>
+        <link href="../../ui/css/upc.css" rel="stylesheet" media="screen">        
     </head>
 
     <body>
@@ -24,15 +21,16 @@
                 <li <check if="{{ @menu == 'brand' }}">class="active"</check>><a href="{{ @BASE.'/brands' }}">Brands</a></li>    
                 <li><a href="{{ @BASE.'/item-number-extensions' }}">Item Number extensions</a></li>    
                 <li><a href="{{ @BASE.'/art-work-languages' }}">Art Work Languages</a></li>   
-                <check if="{{ @role == 0 }}">                              
-                  <li class="dropdown">
+                <check if="{{ @role == 0 }}">  
+                  <li <check if="{{ @menu == 'user' }}">class="active"</check>><a href="{{ @BASE.'/users' }}">Users</a></li>                               
+                  <!-- <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="{{ @BASE.'/' }}">Users
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                       <li><a href="{{ @BASE.'/' }}">List Users</a></li>
                       <li><a href="{{ @BASE.'/user/create' }}">Create User</a></li>                  
                     </ul>
-                  </li>  
+                  </li>   -->
                 </check>                            
               </ul>
             </check>
@@ -52,9 +50,7 @@
             <div class="jumbotron">
                 <h1>{{ @page_head }}</h1>
             </div>
-
-            <!-- <include href="user/nav.htm" />
- -->
+            
             <check if="{{ @message }}">
             <div class="alert alert-success">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>

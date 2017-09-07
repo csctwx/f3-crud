@@ -1,24 +1,40 @@
-<table width="600" cellpadding="5" class="table table-hover table-bordered">
-    <thead>
-    <tr>
-        <th scope="col">Username</th>        
-        <th scope="col">Role</th>
-        <th scope="col">Status</th>
-        <th scope="col">Action</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <repeat group="{{ @users }}" value="{{ @user }}">
-        <tr>
-            <td>{{ trim(@user.username) }}</td>            
-            <td>{{ trim(@roles[@user.role]) }}</td>
-            <td>{{ trim(@statuses[@user.status]) }}</td>
-            <td><a href="{{ @BASE.'/user/update/'. @user.id }}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
-                &nbsp; <a href="{{ @BASE.'/user/delete/'. @user.id }}" class="btn btn-danger"><i class="icon-remove icon-white"></i>
-                    Delete</a></td>
-
+<ul class="nav navbar-nav sub-nav">  
+  <check  if="{{ @role != 2 }}">            
+    <li><a href="{{ @BASE.'/user/create' }}" class="btn btn-primary"><i class="icon-edit icon-white"></i>Create</a></li>  
+  </check>
+</ul>
+<table data-toggle="table"       
+       data-query-params="queryParams"
+       data-pagination="true"
+       data-search="true"       
+       class="table table-striped">
+    <thead>    
+    <tr class="row">
+            <th data-field="brand"  data-sortable="true"  class="col-sm-5">Username</th>        
+            <th data-field="prefix"  data-sortable="true" class="col-sm-2">Role</th>
+            <th data-field="lastnumber"  data-sortable="true" class="col-sm-2">Status</th>
+            <check  if="{{ @role != 2 }}" class="col-sm-3">
+                <th>Action</th>
+            </check>
         </tr>
-    </repeat>
+    </thead>
+    <tbody>
+        <repeat group="{{ @users }}" value="{{ @user }}">
+            <tr>
+                <td>{{ trim(@user.username) }}</td>            
+                <td>{{ trim(@roles[@user.role]) }}</td>
+                <td>{{ trim(@statuses[@user.status]) }}</td>
+                <check  if="{{ @role != 2 }}">
+                    <td>
+                        <a href="{{ @BASE.'/user/update/'. @user.id }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp; Edit</a>
+                        &nbsp; &nbsp;&nbsp;&nbsp;
+                        <a href="{{ @BASE.'/user/delete/'. @user.id }}"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>&nbsp; Delete</a>
+                    </td>
+                </check>
+            </tr>
+        </repeat>        
     </tbody>
 </table>
+
+
+
