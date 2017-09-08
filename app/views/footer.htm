@@ -27,6 +27,9 @@
         fields: {
             password: {
                 validators: {
+                    notEmpty: {
+                        message: 'The password is required'
+                    },
                     identical: {
                         field: 'confirmPassword',
                         message: 'The password and its confirm are not the same'

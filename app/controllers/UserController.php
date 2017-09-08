@@ -32,7 +32,8 @@ class UserController extends Controller {
 
         if(password_verify($password, $user->password)) {   
             $this->f3->set('SESSION.user', $user->username);     
-            $this->f3->set('SESSION.role', $user->role);       
+            $this->f3->set('SESSION.role', $user->role);  
+            $this->f3->set('SESSION.id', $user->id);       
             $this->f3->reroute('/');
         } else {            
             $this->f3->reroute('/login');
@@ -101,6 +102,26 @@ class UserController extends Controller {
             //$this->f3->set('user',$user);
             $this->f3->set('page_head','Reset Password');
             $this->f3->set('view','user/reset.htm');
+        }
+
+    }
+
+    public function password()
+    {
+
+        $user = new User($this->db);
+        $this->f3->set('menu','password');
+
+        if($this->f3->exists('POST.password'))
+        {
+            $user->myreset($this->f3->get('POST.id'));
+            $this->f3->reroute('/users');
+        } else
+        {
+            $user->getById($this->f3->get('PARAMS.id'));
+            $this->f3->set('POST.password','');            
+            $this->f3->set('page_head','Change Password');
+            $this->f3->set('view','user/password.htm');
         }
 
     }

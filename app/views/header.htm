@@ -39,7 +39,11 @@
                 <li><a href="{{ @BASE.'/login' }}"><span class="glyphicon glyphicon-log-out"></span> Login</a></li>
               </check>
               <check if="{{ @page_head != 'Login' }}">
-                <li><a href="{{ @BASE.'/logout' }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <li <check if="{{ @menu == 'password' }}">class="active"</check>>
+                  <a href="{{ @BASE.'/user/password/'.@SESSION.id }}"><span class="glyphicon glyphicon-user"></span>&nbsp;{{@SESSION.user}}</a></li>
+                <li>
+                  <a href="{{ @BASE.'/logout' }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                </li>
               </check>
             </ul>
           </div>
