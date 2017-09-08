@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2017 at 04:18 AM
+-- Generation Time: Sep 08, 2017 at 04:25 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `languages` (
   `id` int(11) NOT NULL,
-  `languages` varchar(5) NOT NULL,
+  `language` varchar(5) NOT NULL,
   `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -38,7 +38,7 @@ CREATE TABLE `languages` (
 -- Dumping data for table `languages`
 --
 
-INSERT INTO `languages` (`id`, `languages`, `description`) VALUES
+INSERT INTO `languages` (`id`, `language`, `description`) VALUES
 (1, 'CC', 'Chinese'),
 (2, 'Q', 'Russian'),
 (3, 'S', 'Spanish'),

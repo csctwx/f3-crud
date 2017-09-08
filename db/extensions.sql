@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2017 at 04:18 AM
+-- Generation Time: Sep 08, 2017 at 04:26 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `extensions` (
   `id` int(11) NOT NULL,
-  `extensions` varchar(3) NOT NULL,
+  `extension` varchar(3) NOT NULL,
   `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -38,7 +38,7 @@ CREATE TABLE `extensions` (
 -- Dumping data for table `extensions`
 --
 
-INSERT INTO `extensions` (`id`, `extensions`, `description`) VALUES
+INSERT INTO `extensions` (`id`, `extension`, `description`) VALUES
 (1, 'C1', 'Case Pack 1'),
 (2, 'C12', 'Case Pack 12'),
 (3, 'C2', 'Case Pack 2'),
