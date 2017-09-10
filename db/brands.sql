@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 04, 2017 at 02:24 AM
+-- Generation Time: Sep 10, 2017 at 03:43 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -19,112 +19,110 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `upc`
+-- Database: `upcf3`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_lines`
+-- Table structure for table `brands`
 --
 
 CREATE TABLE `brands` (
   `id` int(11) NOT NULL,
-  `brand` varchar(255) NOT NULL UNIQUE,
-  `prefix` varchar(3) NOT NULL,
-  `lastnumber` int(11) NOT NULL
+  `code` varchar(9) DEFAULT NULL,
+  `name` varchar(29) DEFAULT NULL,
+  `prefix` varchar(6) DEFAULT NULL,
+  `item_number` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `product_lines`
+-- Dumping data for table `brands`
 --
 
-INSERT INTO `brands` (`id`, `brand`, `prefix`, `lastnumber`) VALUES
-(1, 'All Aboard', 'AB', 5038),
-(2, 'B. Brand', 'BX', 1673),
-(3, 'B. Brand - ASST', 'BX', 3236),
-(4, 'B. Brand - SIGNAGE', 'BX', 6016),
-(7, 'Battat', 'BT', 2573),
-(8, 'Battat - ASST OLD COLOR', 'BT', 6032),
-(9, 'Battat - ASST NEW COLORS', 'BT', 6515),
-(10, 'Baby Sweetheart', 'BG', 7006),
-(11, 'Bristle Blocks', '', 3105),
-(12, 'Craftabelle - JEWELRY ITEMS', 'CF', 2436),
-(13, 'Craftabelle - PAPERCRAFT', 'CF', 2105),
-(14, 'Craftabelle - HOME DECOR', 'CF', 2231),
-(15, 'Craftabelle - ASST', 'CF', 6045),
-(16, 'Driven (Wheels)', 'WH', 1061),
-(17, 'Driven - ASST', 'WH', 3014),
-(18, 'Enchanted - INFANT', 'EN', 1612),
-(19, 'Enchanted - TODDLER', 'EN', 3545),
-(20, 'Enchanted - ASST', 'EN', 5025),
-(21, 'Glitter Girls - DOLLS', 'GG', 51006),
-(22, 'Glitter Girls - ACCESSORIES', 'GG', 57014),
-(23, 'Glitter Girls - HORSES', 'GG', 58001),
-(24, 'Glitterr Girls - OUTFITS', 'GG', 50015),
-(25, 'Lori - DOLLS', 'LO', 31126),
-(26, 'Lori - ACCESSORIES', 'LO', 37053),
-(27, 'Lori - HORSES', 'LO', 38017),
-(28, 'Lori - OUTFITS', 'LO', 30032),
-(29, 'Lori - ASST', 'LO', 40070),
-(30, 'OG - DOLLS', 'BD', 31193),
-(31, 'OG - ACCESSORIES', 'BD', 37451),
-(32, 'OG - HORSES', 'BD', 38037),
-(33, 'OG - PUPS (Kittens)', 'BD', 37808),
-(34, 'OG - OUTFITS', 'BD', 30355),
-(35, 'OG - ASST', 'BD', 40769),
-(36, 'OG - MINI DOLLS', 'BD', 33067),
-(37, 'OG - RETRO DOLLS', 'BD', 61015),
-(38, 'OG - RETRO ACCESSORIES', 'BD', 67054),
-(39, 'OG - RETRO OUTFITS', 'BD', 60063),
-(40, 'OG (Girl) - ACCESSORIES', 'BD', 39003),
-(41, 'OG - Me & You - OUTFITS (Series)', 'OG', 1573),
-(42, 'OG - Me & You - ACCESSORIES', 'OG', 1738),
-(43, 'OG - Me & You - JEWELRY', 'OG', 1806),
-(44, 'OG - Me & You - ASST', 'OG', 4083),
-(45, 'Pucci ', 'ST', 8362),
-(46, 'Pucci - ELECTRONIC', 'ST', 9040),
-(47, 'Pucci - MINI', 'ST', 6015),
-(48, 'Pucci - ASST', 'ST', 4144),
-(51, 'Terra - INDIVIDUALS', 'AN', 2772),
-(52, 'Terra - DINOS/FANTASY', 'AN', 4040),
-(53, 'Terra - STRUCTURES', 'AN', 2104),
-(54, 'Terra - ASST', 'AN', 6080),
-(55, 'Volta', 'VO', 7094),
-(56, 'Volta - ASST', 'VO', 4020),
-(57, 'Wonder Wheels', 'VE', 1017),
-(58, 'Wonder Wheels - ASST', 'VE', 3009),
-(59, 'Woodzeez', '', 6284),
-(60, 'Woodzeez - ASST', '', 6968),
-(63, 'Art Studio', 'MC', 7002),
-(64, 'Glitter Girls - ASST', 'GG', 40001),
-(65, 'OG-DISPLAYS', 'BD', 12);
+INSERT INTO `brands` (`id`, `code`, `name`, `prefix`, `item_number`) VALUES
+(1, 'AB', 'All Aboard', 'AB', 5100),
+(2, 'ANASS', 'Terra Assortments', 'AN', 6095),
+(3, 'ANDINO', 'Terra Dinosaurs', 'AN', 4055),
+(4, 'AN', 'Terra Individual', 'AN', 2800),
+(5, 'BB', 'Battat Original', 'BB', 94000),
+(6, 'BDACC', 'OG Accessories', 'BD', 35000),
+(7, 'BDASS', 'OG Assortments', 'BD', 40800),
+(8, 'BDDOLL', 'OG Dolls', 'BD', 31250),
+(9, 'BDGACC', 'OG Girl Accessories', 'BD', 39005),
+(10, 'BDHOR', 'OG Horses', 'BD', 38165),
+(11, 'BDMIDOLL', 'OG Mini Dolls', 'BD', 33075),
+(12, 'BDOUT', 'OG Outfits', 'BD', 32000),
+(13, 'BDREACC', 'OG Retro Accessories', 'BD', 67065),
+(14, 'BDREDOLL', 'OG Retro Dolls', 'BD', 61025),
+(15, 'BDREOUT', 'OG Retro Outfits', 'BD', 60075),
+(16, 'BDSP', 'OG Special Projects', 'BD', 90002),
+(17, 'BDDIORAMA', 'OG Diorama', 'BDDISP', 13),
+(18, 'BG', 'Baby Sweetheart', 'BG', 7020),
+(19, 'BR', 'Bristle Blocks', 'BR', 3120),
+(20, 'BTASSR', 'Battat Assortmen Recolored', 'BT', 6550),
+(21, 'BTASS', 'Battat Assortment', 'BT', 6050),
+(22, 'BT', 'Battat New Line', 'BT', 2590),
+(23, 'B', 'B. ', 'BX', 1750),
+(24, 'BASS', 'B. Assortments', 'BX', 3400),
+(25, 'BSIG', 'B. Sinage Displays', 'BX', 6025),
+(26, 'CA ', 'Camomille', 'CA', 6500),
+(27, 'CF', 'Craftabelle', 'CF', 2450),
+(28, 'CFASS', 'Craftabelle Assortments', 'CF', 6050),
+(29, 'ENINF', 'Enchantment Infant', 'EN', 1713),
+(30, 'ENPLU', 'Enchantment Plush', 'EN', 5026),
+(31, 'GGACC', 'Glitter Girls Accessories', 'GG', 57050),
+(32, 'GGASS', 'Glitter Girls Assortments', 'GG', 40050),
+(33, 'GGDOLL', 'Glitter Girls Dolls', 'GG', 51050),
+(34, 'GGEVENT', 'Glitter Girls Events', 'GG', 31),
+(35, 'GGHOR', 'Glitter Girls Horses', 'GG', 58005),
+(36, 'GGOUT', 'Glitter Girls Outfits', 'GG', 50050),
+(37, 'LOACC', 'LORI Accessories', 'LO', 37150),
+(38, 'LORASS', 'LORI Assortments', 'LO', 40085),
+(39, 'LODOLL', 'LORI Dolls', 'LO', 31150),
+(40, 'LOHOR', 'LORI Horses', 'LO', 38050),
+(41, 'LOOUT', 'LORI Outfits', 'LO', 30050),
+(42, 'MC', 'Art Studio', 'MC', 7500),
+(43, 'ENTOD', 'Enchantment Toddler', 'NE', 3546),
+(44, 'OGEVENT', 'OG Events', 'OG', 100),
+(45, 'OG', 'OG Me and You', 'OG', 1815),
+(46, 'OGASS', 'OG Me and You Assortments', 'OG', 4085),
+(47, 'PC', 'Play Circle', 'PC', 2235),
+(48, 'PCASS', 'Play Circle Assortments', 'PC', 5205),
+(49, 'STASS', 'Pucci Pups Assortments', 'ST', 4155),
+(50, 'STELEC', 'Pucci Pups Electronic', 'ST', 9045),
+(51, 'STPLU', 'Pucci Pups Plush', 'ST', 8375),
+(52, 'VE', 'Wonder Wheels', 'VE', 1025),
+(53, 'VEASS', 'Wonder Wheels Assortments', 'VE', 3015),
+(54, 'VO  ', 'Volta  ', 'VO', 7095),
+(55, 'VOASS', 'Volta Assortments', 'VO', 4025),
+(56, 'WH', 'Driven', 'WH', 1100),
+(57, 'WHASS', 'Driven Assortments', 'WH', 3025),
+(58, 'WZ', 'Woodzeez', 'WZ', 6500),
+(59, 'WZASS', 'Woodzeez Assortments', 'WZ', 6995),
+(60, 'WZBOB', 'Woodzeez Bobblehead', 'WZ', 69100),
+(61, 'WZSP', 'Woodzeez Bobblehead specialty', 'WZ', 55100);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `product_lines`
+-- Indexes for table `brands`
 --
 ALTER TABLE `brands`
-  ADD PRIMARY KEY  (`id`);
-
-ALTER TABLE `brands`
-  ADD UNIQUE (`id`);
-
-ALTER TABLE `brands`
-  ADD CONSTRAINT Prefix_Number UNIQUE (`prefix`,`lastnumber`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `Brand_Code` (`code`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `product_lines`
+-- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
