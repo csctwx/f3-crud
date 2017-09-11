@@ -1,0 +1,37 @@
+<ul class="nav navbar-nav sub-nav">  
+  <check  if="{{ @role != 2 }}">            
+    <li><a href="{{ @BASE.'/extension/create' }}" class="btn btn-primary"><i class="icon-edit icon-white"></i>Create</a></li>  
+  </check>
+</ul>
+<table data-toggle="table"       
+       data-query-params="queryParams"
+       data-pagination="true"
+       data-search="true"       
+       class="table table-striped">
+    <thead>    
+    <tr class="row">
+            <th data-field="extension"  data-sortable="true"  class="col-sm-4">Extension</th>              
+            <th data-field="new_item_number"  data-sortable="true" class="col-sm-4">Description</th>
+            <check  if="{{ @role != 2 }}" class="col-sm-4">
+                <th>Action</th>
+            </check>
+        </tr>
+    </thead>
+    <tbody>
+        <repeat group="{{ @extensions }}" value="{{ @extension }}">
+            <tr>
+                <td>{{ trim(@extension.extension) }}</td>                
+                <td>{{ trim(@extension.description) }}</td>
+                <check  if="{{ @role != 2 }}">
+                    <td>
+                        <a href="{{ @BASE.'/extension/update/'. @extension.id }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp; Edit</a>
+                        &nbsp; &nbsp;&nbsp;&nbsp;
+                        <a href="{{ @BASE.'/extension/delete/'. @extension.id }}"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>&nbsp; Delete</a>
+                    </td>
+                </check>
+            </tr>
+        </repeat>        
+    </tbody>
+</table>
+
+

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2017 at 04:26 AM
+-- Generation Time: Sep 11, 2017 at 02:59 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `extensions` (
   `id` int(11) NOT NULL,
-  `extension` varchar(3) NOT NULL,
+  `extension` varchar(9) NOT NULL,
   `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -53,7 +53,8 @@ INSERT INTO `extensions` (`id`, `extension`, `description`) VALUES
 (12, 'IM', 'Imaginarium'),
 (13, 'IT', 'Its magical'),
 (14, 'K', 'Bulk'),
-(15, 'T', 'Theme Item UPC');
+(15, 'T', 'Theme Item UPC'),
+(16, 'NEW', 'new ext1');
 
 --
 -- Indexes for dumped tables
@@ -64,7 +65,8 @@ INSERT INTO `extensions` (`id`, `extension`, `description`) VALUES
 --
 ALTER TABLE `extensions`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
+  ADD UNIQUE KEY `id` (`id`),
+  ADD UNIQUE KEY `extension` (`extension`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -74,7 +76,7 @@ ALTER TABLE `extensions`
 -- AUTO_INCREMENT for table `extensions`
 --
 ALTER TABLE `extensions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
