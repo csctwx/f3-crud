@@ -30,10 +30,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `items` (
   `id` int(11) NOT NULL,
-  `barcode` bigint(12) UNSIGNED ZEROFILL DEFAULT NULL,
+  `barcode` varchar(12) DEFAULT NULL,
   `createdate` date DEFAULT NULL,
   `description` text,
-  `item_number` varchar(10) DEFAULT NULL,
+  `upc` varchar(10) DEFAULT NULL,
   `brand_code` varchar(8) DEFAULT NULL,
   `brand_name` varchar(29) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -42,7 +42,7 @@ CREATE TABLE `items` (
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`id`, `barcode`, `createdate`, `description`, `item_number`, `brand_code`, `brand_name`) VALUES
+INSERT INTO `items` (`id`, `barcode`, `createdate`, `description`, `upc`, `brand_code`, `brand_name`) VALUES
 (1, 062243245174, '2011-03-25', 'interlocking base plates', '3018J', 'BR', 'Bristle Blocks'),
 (2, 062243254350, '2012-05-17', 'interlocking base plates', '3018Z', 'BR', 'Bristle Blocks'),
 (3, 062243215092, '2008-11-17', 'BRISTLE BLOCKS BASICS', '3021B', 'BR', 'Bristle Blocks'),

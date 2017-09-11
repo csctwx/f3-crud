@@ -1,0 +1,41 @@
+<ul class="nav navbar-nav sub-nav">  
+  <check  if="{{ @role != 2 }}">            
+    <li><a href="{{ @BASE.'/item/create' }}" class="btn btn-primary"><i class="icon-edit icon-white"></i>Create</a></li>  
+  </check>
+</ul>
+<table data-toggle="table"       
+       data-query-params="queryParams"
+       data-pagination="true"
+       data-search="true"       
+       class="table table-striped">
+    <thead>    
+    <tr class="row">
+            <th data-field="upc"  data-sortable="true"  class="col-sm-2">UPC</th>              
+            <th data-field="description"  data-sortable="true" class="col-sm-4">Description</th>
+            <th data-field="barcode"  data-sortable="true"  class="col-sm-2">Barcode</th>         
+            <th data-field="createdate"  data-sortable="true"  class="col-sm-2">Created Date</th>         
+            <check  if="{{ @role != 2 }}" class="col-sm-2">
+                <th>Action</th>
+            </check>
+        </tr>
+    </thead>
+    <tbody>
+        <repeat group="{{ @items }}" value="{{ @item }}">
+            <tr>
+                <td>{{ trim(@item.upc) }}</td>                 
+                <td>{{ trim(@item.description) }}</td>
+                <td>{{ trim(@item.barcode) }}</td> 
+                <td>{{ trim(@item.createdate) }}</td> 
+                <check  if="{{ @role != 2 }}">
+                    <td>
+                        <a href="{{ @BASE.'/item/update/'. @item.id }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp; Edit</a>
+                        &nbsp; &nbsp;&nbsp;&nbsp;
+                        <a href="{{ @BASE.'/item/delete/'. @item.id }}"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>&nbsp; Delete</a>
+                    </td>
+                </check>
+            </tr>
+        </repeat>        
+    </tbody>
+</table>
+
+

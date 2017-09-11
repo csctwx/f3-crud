@@ -41,11 +41,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `role`, `status`) VALUES
-(1, 'ephthe', '$2y$10$5fUosdkRY1LWxuwQg.feN.IKwNofEGWtVRu/itfAuDhQvPk9znasK', 3, 1),
-(2, 'Yanika', '$2y$10$5fUosdkRY1LWxuwQg.feN.IKwNofEGWtVRu/itfAuDhQvPk9znasK', 3, 1),
-(3, 'Jenny', '$2y$10$5fUosdkRY1LWxuwQg.feN.IKwNofEGWtVRu/itfAuDhQvPk9znasK', 3, 1),
-(4, 'Michelle', '$2y$10$5fUosdkRY1LWxuwQg.feN.IKwNofEGWtVRu/itfAuDhQvPk9znasK', 3, 1),
-(5, 'admin', '$2y$10$Is/.T6itW/3yL4cyrxL2V.auHiNPbU6yvkq4CV3hdtQ7e5bR2x0ae', 1, 1);
+(1, 'ephthe', '$2y$10$5fUosdkRY1LWxuwQg.feN.IKwNofEGWtVRu/itfAuDhQvPk9znasK', 2, 1),
+(2, 'Yanika', '$2y$10$5fUosdkRY1LWxuwQg.feN.IKwNofEGWtVRu/itfAuDhQvPk9znasK', 2, 1),
+(3, 'Jenny', '$2y$10$5fUosdkRY1LWxuwQg.feN.IKwNofEGWtVRu/itfAuDhQvPk9znasK', 2, 1),
+(4, 'Michelle', '$2y$10$5fUosdkRY1LWxuwQg.feN.IKwNofEGWtVRu/itfAuDhQvPk9znasK', 2, 1),
+(5, 'admin', '$2y$10$Is/.T6itW/3yL4cyrxL2V.auHiNPbU6yvkq4CV3hdtQ7e5bR2x0ae', 0, 1);
 
 --
 -- Indexes for dumped tables

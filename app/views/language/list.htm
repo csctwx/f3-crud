@@ -11,14 +11,14 @@
     <thead>    
     <tr class="row">
             <th data-field="language"  data-sortable="true"  class="col-sm-4">Language</th>              
-            <th data-field="new_item_number"  data-sortable="true" class="col-sm-4">Description</th>
+            <th data-field="description"  data-sortable="true" class="col-sm-4">Description</th>
             <check  if="{{ @role != 2 }}" class="col-sm-4">
                 <th>Action</th>
             </check>
         </tr>
     </thead>
     <tbody>
-        <repeat group="{{ @languages }}" value="{{ @language }}">
+        <repeat group="{{ @languagess }}" value="{{ @languages }}">
             <tr>
                 <td>{{ trim(@language.language) }}</td> 
                 <td>{{ trim(@language.description) }}</td>

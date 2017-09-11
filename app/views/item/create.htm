@@ -1,0 +1,21 @@
+<form action="{{ @BASE.'/language/create' }}" method="post"  class="form-horizontal">
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="language">Language:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="language" name="language" value="">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="description">Description:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="description" name="description" value="">
+    </div>
+  </div>    
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">       
+       <input type="hidden" name="create" value="create" />
+       <a href="{{ @BASE.'/languages' }}" class="btn btn-primary">Back To List</a>
+       <button type="submit" class="btn btn-primary pull-right">Add Language</button>
+    </div>
+  </div>
+</form>
