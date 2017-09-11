@@ -22,7 +22,7 @@ class Language extends DB\SQL\Mapper {
     }
 
     public function getByLanguage($language) {
-        $this->load(array('language=?', $language);
+        $this->load(array('language=?', $language));
     }
 
     public function edit($id) {

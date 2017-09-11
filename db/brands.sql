@@ -33,14 +33,14 @@ CREATE TABLE `brands` (
   `code` varchar(9) DEFAULT NULL,
   `name` varchar(29) DEFAULT NULL,
   `prefix` varchar(6) DEFAULT NULL,
-  `item_number` int(11) DEFAULT NULL
+  `new_item_number` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `brands`
 --
 
-INSERT INTO `brands` (`id`, `code`, `name`, `prefix`, `item_number`) VALUES
+INSERT INTO `brands` (`id`, `code`, `name`, `prefix`, `new_item_number`) VALUES
 (1, 'AB', 'All Aboard', 'AB', 5100),
 (2, 'ANASS', 'Terra Assortments', 'AN', 6095),
 (3, 'ANDINO', 'Terra Dinosaurs', 'AN', 4055),

@@ -36,7 +36,7 @@ class LanguageController extends Controller {
     public function update()
     {
 
-        $language = new Language$this->db);
+        $language = new Language($this->db);
 
         if($this->f3->exists('POST.update'))
         {

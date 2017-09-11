@@ -53,8 +53,7 @@ INSERT INTO `extensions` (`id`, `extension`, `description`) VALUES
 (12, 'IM', 'Imaginarium'),
 (13, 'IT', 'Its magical'),
 (14, 'K', 'Bulk'),
-(15, 'T', 'Theme Item UPC'),
-(16, 'NEW', 'new ext1');
+(15, 'T', 'Theme Item UPC');
 
 --
 -- Indexes for dumped tables
@@ -76,7 +75,7 @@ ALTER TABLE `extensions`
 -- AUTO_INCREMENT for table `extensions`
 --
 ALTER TABLE `extensions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
