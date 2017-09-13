@@ -15,6 +15,31 @@ class ItemController extends Controller {
         $this->f3->set('view','item/list.htm');
 	}
 
+    public function data()
+    {
+        $item = new Item($this->db);
+        $items = $item->all();
+        $params = $this->f3->get('GET.limit');
+        print_r($params);
+//         $data=array("total"=>20,"rows"=>array(
+//     array(
+//       "upc"=> 210,
+//       "description"=> "Item 10",
+//       "barcode"=> "033154358",
+//       "createdate"=> "20170516"
+//     ),
+//     array(
+//       "upc"=> 11,
+//       "description"=> "Item 11",
+//       "barcode"=> "033154458",
+//       "createdate"=> "20150516"
+//     )));
+
+// echo json_encode($data);
+        die();
+    }
+
+
     public function create()
     {   if($this->f3->get('role') == 2 ){
           $this->f3->reroute('/items');
