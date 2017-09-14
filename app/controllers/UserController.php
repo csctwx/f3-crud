@@ -58,7 +58,7 @@ class UserController extends Controller {
             $user = new User($this->db);
             $user->add();
 
-            $this->f3->reroute('/success/New User Created');
+            $this->f3->reroute('/user/success/New User Created');
         } else
         {
             $this->f3->set('page_head','Create User');
@@ -75,11 +75,10 @@ class UserController extends Controller {
         if($this->f3->exists('POST.update'))
         {
             $user->edit($this->f3->get('POST.id'));
-            $this->f3->reroute('/user/success/User Updated');
+            $this->f3->reroute('user/success/User Updated');
         } else
         {
-            $user->getById($this->f3->get('PARAMS.id'));
-            //$this->f3->set('user',$user);
+            $user->getById($this->f3->get('PARAMS.id'));            
             $this->f3->set('page_head','Update User');
             $this->f3->set('view','user/update.htm');
         }
@@ -94,7 +93,7 @@ class UserController extends Controller {
         if($this->f3->exists('POST.reset'))
         {
             $user->myreset($this->f3->get('POST.id'));
-            $this->f3->reroute('/user/success/User Reseted');
+            $this->f3->reroute('user/success/User Reseted');
         } else
         {
             $user->getById($this->f3->get('PARAMS.id'));
@@ -134,6 +133,6 @@ class UserController extends Controller {
             $user->delete($this->f3->get('PARAMS.id'));
         }
 
-        $this->f3->reroute('/success/User Deleted');
+        $this->f3->reroute('/user/success/User Deleted');
     }
 }
