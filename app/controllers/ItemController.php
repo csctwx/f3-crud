@@ -10,7 +10,7 @@ class ItemController extends Controller {
     {
         $item = new Item($this->db);
         $this->f3->set('items',$item->all());
-        $this->f3->set('page_head','item List');
+        $this->f3->set('page_head','Item List');
         $this->f3->set('message', $this->f3->get('PARAMS.message'));
         $this->f3->set('view','item/list.htm');
 	}
@@ -19,25 +19,20 @@ class ItemController extends Controller {
     {
         $sort = $this->f3->get('GET.sort');
         $order = $this->f3->get('GET.order');
-        $search = $this->f3->get('GET.search');
-        $offset = $this->f3->get('GET.offset');
+        $search = $this->f3->get('GET.search');        
         $limit = $this->f3->get('GET.limit');
+
+        $offset = $limit ? $this->f3->get('GET.offset')/$limit : null;        
+        $option = $sort ? array('order' => $sort.' '.$order) : null; 
+        $filter = $search ? array('description LIKE ? OR upc LIKE ?','%'.$search.'%','%'.$search.'%') : null;
+
         $item = new Item($this->db);
-        $option = $sort ? array(
-                                'order' => $sort.' '.$order
-                                // 'offset' => $offset,
-                                // 'order' => $order
-                                ) 
-                        : null;       
-        $items = $item->page(
-                             $offset,$limit,
-                             array('description LIKE ? OR upc LIKE ?','%'.$search.'%','%'.$search.'%'),
-                             $option
-                            );
-        
+        $items = $item->page($offset, $limit, $filter, $option);        
         $rows = array();
         foreach ($items['subset'] as $field) {
-            array_push($rows, array('upc'=>$field->upc,
+            array_push($rows, array(
+                                    'id'=>$field->id,
+                                    'upc'=>$field->upc,
                                     'description'=>$field->description,
                                     'barcode'=>$field->barcode,
                                     'createdate'=>$field->createdate
