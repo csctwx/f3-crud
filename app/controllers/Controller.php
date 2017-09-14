@@ -13,7 +13,7 @@ class Controller {
         
         $this->f3->set('role',$this->f3->get('SESSION.role'));
 		$this->f3->set('message','');
-		$this->f3->set('menu','home');
+		$this->f3->set('menu','item');
 	}
 
 	function afterroute() {
