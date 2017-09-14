@@ -17,25 +17,34 @@ class ItemController extends Controller {
 
     public function data()
     {
+        $sort = $this->f3->get('GET.sort');
+        $order = $this->f3->get('GET.order');
+        $search = $this->f3->get('GET.search');
+        $offset = $this->f3->get('GET.offset');
+        $limit = $this->f3->get('GET.limit');
         $item = new Item($this->db);
-        $items = $item->all();
-        $params = $this->f3->get('GET.limit');
-        print_r($params);
-//         $data=array("total"=>20,"rows"=>array(
-//     array(
-//       "upc"=> 210,
-//       "description"=> "Item 10",
-//       "barcode"=> "033154358",
-//       "createdate"=> "20170516"
-//     ),
-//     array(
-//       "upc"=> 11,
-//       "description"=> "Item 11",
-//       "barcode"=> "033154458",
-//       "createdate"=> "20150516"
-//     )));
-
-// echo json_encode($data);
+        $option = $sort ? array(
+                                'order' => $sort.' '.$order
+                                // 'offset' => $offset,
+                                // 'order' => $order
+                                ) 
+                        : null;       
+        $items = $item->page(
+                             $offset,$limit,
+                             array('description LIKE ? OR upc LIKE ?','%'.$search.'%','%'.$search.'%'),
+                             $option
+                            );
+        
+        $rows = array();
+        foreach ($items['subset'] as $field) {
+            array_push($rows, array('upc'=>$field->upc,
+                                    'description'=>$field->description,
+                                    'barcode'=>$field->barcode,
+                                    'createdate'=>$field->createdate
+                                    ));
+        }
+        $data = array('total'=>$items['total'], 'rows'=>$rows);        
+        echo json_encode($data);
         die();
     }
 

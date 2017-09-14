@@ -48,14 +48,15 @@
             });
         });
         function operateFormatter(value, row, index) {
-        return [
-            '<a class="like" href="javascript:void(0)" title="Like">',
-            '<i class="glyphicon glyphicon-heart"></i>',
-            '</a>  ',
-            '<a class="remove" href="/'+(index+1)+'" title="Remove">',
-            '<i class="glyphicon glyphicon-remove"></i>',
-            '</a>'
-        ].join('');
+            if("{{ @role}}" != 2){
+              return [
+                    '<a href="{{ @BASE }}/item/update/', row.id ,'"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp; Edit</a>&nbsp;&nbsp;&nbsp;',
+                    '<a href="{{ @BASE}}','/item/delete/', row.id,'"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>&nbsp; Delete</a>'
+                ].join('');
+            }                
+            else {
+              return '';
+            }
     }
     </script>
 </html>

@@ -11,6 +11,10 @@ class Item extends DB\SQL\Mapper {
         return $this->query;
     }
 
+    public function page($offset,$limit,$filter,$option) {
+        return $this->paginate($offset,$limit,$filter,$option);        
+    }
+
     public function add() {
         $this->copyFrom('POST');        
         $this->save();
