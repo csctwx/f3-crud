@@ -24,7 +24,7 @@ class ItemController extends Controller {
 
         $offset = $limit ? $this->f3->get('GET.offset')/$limit : null;        
         $option = $sort ? array('order' => $sort.' '.$order) : null; 
-        $filter = $search ? array('description LIKE ? OR upc LIKE ?','%'.$search.'%','%'.$search.'%') : null;
+        $filter = $search ? array('description LIKE ? OR code LIKE ?','%'.$search.'%','%'.$search.'%') : null;
 
         $item = new Item($this->db);
         $items = $item->page($offset, $limit, $filter, $option);        
@@ -32,7 +32,7 @@ class ItemController extends Controller {
         foreach ($items['subset'] as $field) {
             array_push($rows, array(
                                     'id'=>$field->id,
-                                    'upc'=>$field->upc,
+                                    'code'=>$field->code,
                                     'description'=>$field->description,
                                     'barcode'=>$field->barcode,
                                     'createdate'=>$field->createdate
