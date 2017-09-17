@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2017 at 04:40 AM
+-- Generation Time: Sep 17, 2017 at 05:09 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -36,9 +36,9 @@ CREATE TABLE `items` (
   `barcode` varchar(12) DEFAULT NULL,
   `createdate` date DEFAULT NULL,
   `updatedate` date NOT NULL,
-  `brand_code` varchar(8) DEFAULT NULL,
+  `brand_code` varchar(9) DEFAULT NULL,
   `brand_name` varchar(29) DEFAULT NULL,
-  `brand_prefix` varchar(5) NOT NULL,
+  `brand_prefix` varchar(6) NOT NULL,
   `extension` varchar(9) NOT NULL,
   `language` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -6193,18 +6193,18 @@ INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdat
 (6126, 'BD67054D', '', 'Retro Pegged Acc Set: Bowling', '062243336216', '2017-01-13', '0000-00-00', 'BDREACC', 'OG Retro Accessories', 'BD', '', ''),
 (6127, 'BD67054Z', '', 'Retro Pegged Acc Set: Bowling', '062243346253', '2017-06-21', '0000-00-00', 'BDREACC', 'OG Retro Accessories', 'BD', '', ''),
 (6128, 'BD90001', '', 'OG Shipper', '062243346949', '2017-07-12', '0000-00-00', 'BDSP', 'OG Special Projects', 'BD', '', ''),
-(6129, 'BDDISP1', '', 'Horse Diorama: BD31009ATZ (Lily Anna), BD38151Z (Thoroughbred), BD37089Z (Horse Barn), BD38001Z (Lipizzaner Foal)', '062243318908', '2016-04-01', '0000-00-00', 'BDDIORAM', 'OG Diorama', '', '', ''),
-(6130, 'BDDISP2', '', 'Hairplay Diorama: BD31028Z (Phoebe), BD37009Z (Salon Chair), BD37034Z (Salon Set)', '062243318915', '2016-04-01', '0000-00-00', 'BDDIORAM', 'OG Diorama', '', '', ''),
-(6131, 'BDDISP3', '', 'Camping Diorama: BD31042ATZ (Layla), BD37019NTZ (4x4), BD37050Z (Camping Set), BD37110Z (Picnic Set)', '062243318922', '2016-04-01', '0000-00-00', 'BDDIORAM', 'OG Diorama', '', '', ''),
-(6132, 'BDDISP4', '', 'Ice Cream Truck Diorama: BD37252Z (Ice Cream Truck), BD37306 (Ice Cream Playset), BD31092 (Noa)', '062243318939', '2016-04-01', '0000-00-00', 'BDDIORAM', 'OG Diorama', '', '', ''),
-(6133, 'BDDISP5', '', 'Home Diorama (top) SIS', '062243321830', '2016-05-06', '0000-00-00', 'BDDIORAM', 'OG Diorama', '', '', ''),
-(6134, 'BDDISP6', '', 'Home Diorama (Bottom) SIS', '062243321847', '2016-05-06', '0000-00-00', 'BDDIORAM', 'OG Diorama', '', '', ''),
-(6135, 'BDDISP7', '', 'Camping Diorama SIS', '062243321854', '2016-05-06', '0000-00-00', 'BDDIORAM', 'OG Diorama', '', '', ''),
-(6136, 'BDDISP8', '', 'Retro Diner Diorama', '062243321861', '2016-05-06', '0000-00-00', 'BDDIORAM', 'OG Diorama', '', '', ''),
-(6137, 'BDDISP9', '', 'School House', '062243336452', '2017-01-18', '0000-00-00', 'BDDIORAM', 'OG Diorama', '', '', ''),
-(6138, 'BDDSP10', '', 'Home Sweet Home', '062243336469', '2017-01-18', '0000-00-00', 'BDDIORAM', 'OG Diorama', '', '', ''),
-(6139, 'BDDSP11', '', 'Beach', '062243336476', '2017-01-18', '0000-00-00', 'BDDIORAM', 'OG Diorama', '', '', ''),
-(6140, 'BDDSP12', '', 'Vet Clinic Diorama', '062243338968', '2017-02-21', '0000-00-00', 'BDDIORAM', 'OG Diorama', '', '', ''),
+(6129, 'BDDISP1', '', 'Horse Diorama: BD31009ATZ (Lily Anna), BD38151Z (Thoroughbred), BD37089Z (Horse Barn), BD38001Z (Lipizzaner Foal)', '062243318908', '2016-04-01', '0000-00-00', 'BDDIORAMA', 'OG Diorama', 'BDDISP', '', ''),
+(6130, 'BDDISP2', '', 'Hairplay Diorama: BD31028Z (Phoebe), BD37009Z (Salon Chair), BD37034Z (Salon Set)', '062243318915', '2016-04-01', '0000-00-00', 'BDDIORAMA', 'OG Diorama', 'BDDISP', '', ''),
+(6131, 'BDDISP3', '', 'Camping Diorama: BD31042ATZ (Layla), BD37019NTZ (4x4), BD37050Z (Camping Set), BD37110Z (Picnic Set)', '062243318922', '2016-04-01', '0000-00-00', 'BDDIORAMA', 'OG Diorama', 'BDDISP', '', ''),
+(6132, 'BDDISP4', '', 'Ice Cream Truck Diorama: BD37252Z (Ice Cream Truck), BD37306 (Ice Cream Playset), BD31092 (Noa)', '062243318939', '2016-04-01', '0000-00-00', 'BDDIORAMA', 'OG Diorama', 'BDDISP', '', ''),
+(6133, 'BDDISP5', '', 'Home Diorama (top) SIS', '062243321830', '2016-05-06', '0000-00-00', 'BDDIORAMA', 'OG Diorama', 'BDDISP', '', ''),
+(6134, 'BDDISP6', '', 'Home Diorama (Bottom) SIS', '062243321847', '2016-05-06', '0000-00-00', 'BDDIORAMA', 'OG Diorama', 'BDDISP', '', ''),
+(6135, 'BDDISP7', '', 'Camping Diorama SIS', '062243321854', '2016-05-06', '0000-00-00', 'BDDIORAMA', 'OG Diorama', 'BDDISP', '', ''),
+(6136, 'BDDISP8', '', 'Retro Diner Diorama', '062243321861', '2016-05-06', '0000-00-00', 'BDDIORAMA', 'OG Diorama', 'BDDISP', '', ''),
+(6137, 'BDDISP9', '', 'School House', '062243336452', '2017-01-18', '0000-00-00', 'BDDIORAMA', 'OG Diorama', 'BDDISP', '', ''),
+(6138, 'BDDISP10', '', 'Home Sweet Home', '062243336469', '2017-01-18', '0000-00-00', 'BDDIORAMA', 'OG Diorama', 'BDDISP', '', ''),
+(6139, 'BDDISP11', '', 'Beach', '062243336476', '2017-01-18', '0000-00-00', 'BDDIORAMA', 'OG Diorama', 'BDDISP', '', ''),
+(6140, 'BDDISP12', '', 'Vet Clinic Diorama', '062243338968', '2017-02-21', '0000-00-00', 'BDDIORAMA', 'OG Diorama', 'BDDISP', '', ''),
 (6141, 'BG7001', '', 'Baby doll-feeding set - open box pkg', '062243283367', '2014-06-03', '0000-00-00', 'BG', 'Baby Sweetheart', 'BG', '', ''),
 (6142, 'BG7001Z', '', 'Baby doll-feeding set - open box pkg IntÔÇÖl', '062243328860', '2016-09-01', '0000-00-00', 'BG', 'Baby Sweetheart', 'BG', '', ''),
 (6143, 'BG7002', '', 'Baby doll-medical set - open box pkg', '062243283398', '2014-06-03', '0000-00-00', 'BG', 'Baby Sweetheart', 'BG', '', ''),
@@ -6265,9 +6265,9 @@ INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdat
 (6198, 'BT2219G', '', 'Dishware Playset', '062243308893', '2015-10-07', '0000-00-00', 'BT', 'Battat New Line', 'BT', '', ''),
 (6199, 'BT2219GTZ', '', 'Dishware Playset INTL', '062243308909', '2015-10-07', '0000-00-00', 'BT', 'Battat New Line', 'BT', '', ''),
 (6200, 'BT2221', '', 'Musical Tea Set', '062243308879', '2015-10-07', '0000-00-00', 'BT', 'Battat New Line', 'BT', '', ''),
-(6201, 'BT2221Z', '', 'Musical Tea Set INTL', '062243308886', '2015-10-07', '0000-00-00', 'BT', 'Battat New Line', 'BT', '', ''),
-(6202, 'BT2226', '', 'Cash Register Playset', '062243308855', '2015-10-07', '0000-00-00', 'BT', 'Battat New Line', 'BT', '', '');
+(6201, 'BT2221Z', '', 'Musical Tea Set INTL', '062243308886', '2015-10-07', '0000-00-00', 'BT', 'Battat New Line', 'BT', '', '');
 INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdate`, `updatedate`, `brand_code`, `brand_name`, `brand_prefix`, `extension`, `language`) VALUES
+(6202, 'BT2226', '', 'Cash Register Playset', '062243308855', '2015-10-07', '0000-00-00', 'BT', 'Battat New Line', 'BT', '', ''),
 (6203, 'BT2226Z', '', 'Cash Register Playset INTL', '062243308862', '2015-10-07', '0000-00-00', 'BT', 'Battat New Line', 'BT', '', ''),
 (6204, 'BT2400', '', 'Light & Sound Keys', '062243266834', '2013-06-25', '0000-00-00', 'BT', 'Battat New Line', 'BT', '', ''),
 (6205, 'BT2400Z', '', 'Light & Sound Keys', '062243265998', '2013-06-21', '0000-00-00', 'BT', 'Battat New Line', 'BT', '', ''),
@@ -6633,9 +6633,9 @@ INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdat
 (6565, 'BT6005Z', '', 'Battat Asst: BT2454Z, BT2457Z  ', '062243309388', '2016-05-03', '0000-00-00', 'BTASS', 'Battat Assortment', 'BT', '', ''),
 (6566, 'BT6005ZCP', '', 'Battat Asst: BT2454Z, BT2457Z in club pack ', '062243309388', '2015-10-20', '0000-00-00', 'BTASS', 'Battat Assortment', 'BT', '', ''),
 (6567, 'BT6006', '', 'Truck Assortment\nBT2450 Front Loader┬á ┬á┬á┬á┬á x1\nBT2451 Fire Engine┬á┬á┬á┬á┬á┬á┬á┬á┬á x1\nBT2452 Garbage Truck ┬á X1\nBT2453 Dump Truck ┬á┬á┬á┬á┬á┬á X1', '062243276888', '2014-03-07', '0000-00-00', 'BTASS', 'Battat Assortment', 'BT', '', ''),
-(6568, 'BT6007', '', 'Truck assort: BT2450 ÔÇô Bull dozer x 2, BT2452 ÔÇô Garbage Truck x 1, BT2453 ÔÇô Dump Truck x 1', '062243284289', '2014-07-16', '0000-00-00', 'BTASS', 'Battat Assortment', 'BT', '', ''),
-(6569, 'BT6007Z', '', 'INTL Truck assort: BT2450Z ÔÇô Bull dozer x 2, BT2452Z ÔÇô Garbage Truck x 1, BT2453Z ÔÇô Dump Truck x 1', '062243285095', '2014-07-31', '0000-00-00', 'BTASS', 'Battat Assortment', 'BT', '', '');
+(6568, 'BT6007', '', 'Truck assort: BT2450 ÔÇô Bull dozer x 2, BT2452 ÔÇô Garbage Truck x 1, BT2453 ÔÇô Dump Truck x 1', '062243284289', '2014-07-16', '0000-00-00', 'BTASS', 'Battat Assortment', 'BT', '', '');
 INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdate`, `updatedate`, `brand_code`, `brand_name`, `brand_prefix`, `extension`, `language`) VALUES
+(6569, 'BT6007Z', '', 'INTL Truck assort: BT2450Z ÔÇô Bull dozer x 2, BT2452Z ÔÇô Garbage Truck x 1, BT2453Z ÔÇô Dump Truck x 1', '062243285095', '2014-07-31', '0000-00-00', 'BTASS', 'Battat Assortment', 'BT', '', ''),
 (6570, 'BT6008', '', 'Bath Buddies Assortment: BT2479, BT2480', '062243284425', '2014-07-17', '0000-00-00', 'BTASS', 'Battat Assortment', 'BT', '', ''),
 (6571, 'BT6008Z', '', 'Bath Buddies Assortment: BT2479Z (existing item BT2466 + 3 Barn friends), BT2480Z (existing item BT2469 +3 Barn friends)', '062243284890', '2014-07-29', '0000-00-00', 'BTASS', 'Battat Assortment', 'BT', '', ''),
 (6572, 'BT6009G', '', 'PDQ assort. Fishing set & Golf set', '062243284432', '2014-07-17', '0000-00-00', 'BTASS', 'Battat Assortment', 'BT', '', ''),
@@ -7026,10 +7026,10 @@ INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdat
 (6957, 'BX1166', '', 'woofer\n\n', '062243237827', '2010-11-01', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
 (6958, 'BX1166CP', '', 'woofer eng. in club pack\n\n', '062243237827', '2012-02-22', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
 (6959, 'BX1166JPN', '', 'Woofer with strap (japan)', '062243251779', '2012-03-05', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
-(6960, 'BX1166X', '', 'woofer bilingual\n\n', '062243251472', '2012-02-22', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
-(6961, 'BX1166XCP', '', 'woofer bilingual in club pack\n\n', '062243251472', '2012-02-22', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
-(6962, 'BX1167', '', 'Textile Book\n', '062243237834', '2010-11-01', '0000-00-00', 'B', 'B. ', 'BX', '', '');
+(6960, 'BX1166X', '', 'woofer bilingual\n\n', '062243251472', '2012-02-22', '0000-00-00', 'B', 'B. ', 'BX', '', '');
 INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdate`, `updatedate`, `brand_code`, `brand_name`, `brand_prefix`, `extension`, `language`) VALUES
+(6961, 'BX1166XCP', '', 'woofer bilingual in club pack\n\n', '062243251472', '2012-02-22', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
+(6962, 'BX1167', '', 'Textile Book\n', '062243237834', '2010-11-01', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
 (6963, 'BX1168', '', 'Holiday Train\n', '062243237841', '2010-11-01', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
 (6964, 'BX1169', '', 'Water / Bath mat', '062243237858', '2010-11-01', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
 (6965, 'BX1170', '', 'rain rush', '062243237865', '2010-11-01', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
@@ -7429,10 +7429,10 @@ INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdat
 (7359, 'BX1404Z', '', 'B. Baby Penguin Rattles INTL', '062243289420', '2014-09-23', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
 (7360, 'BX1405', '', 'B. Baby Mouse Rattle', '062243282681', '2014-05-27', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
 (7361, 'BX1406', '', 'B. Summer Pop up Tent', '062243282698', '2014-05-27', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
-(7362, 'BX1406G', '', 'B. Summer Pop up Tent (Papaya version) PDQ', '062243282698', '2014-08-27', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
-(7363, 'BX1406GTZ', '', 'B. Summer Pop up Tent (Papaya version) PDQ INTL', '062243287921', '2014-09-04', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
-(7364, 'BX1407', '', 'B. Summer Boogie Board', '062243282704', '2014-05-27', '0000-00-00', 'B', 'B. ', 'BX', '', '');
+(7362, 'BX1406G', '', 'B. Summer Pop up Tent (Papaya version) PDQ', '062243282698', '2014-08-27', '0000-00-00', 'B', 'B. ', 'BX', '', '');
 INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdate`, `updatedate`, `brand_code`, `brand_name`, `brand_prefix`, `extension`, `language`) VALUES
+(7363, 'BX1406GTZ', '', 'B. Summer Pop up Tent (Papaya version) PDQ INTL', '062243287921', '2014-09-04', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
+(7364, 'BX1407', '', 'B. Summer Boogie Board', '062243282704', '2014-05-27', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
 (7365, 'BX1408', '', 'B. Summer Large Shovel & Rake (color way #1)', '062243282711', '2014-05-27', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
 (7366, 'BX1408Z', '', 'B. Summer Large Shovel & Rake (color way #1) INTL', '062243287815', '2014-09-04', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
 (7367, 'BX1409', '', 'B. Summer Canvas bag with gardening accessories', '062243282773', '2014-05-27', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
@@ -7839,10 +7839,10 @@ INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdat
 (7768, 'BX1641', '', 'Light up Frisbee', '062243337367', '2017-01-25', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
 (7769, 'BX1641Z', '', 'Light up Frisbee INTL', '062243337602', '2017-01-25', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
 (7770, 'BX1642', '', 'Rocking Zebra', '062243337824', '2017-02-14', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
-(7771, 'BX1642Z', '', 'Rocking Zebra', '062243337831', '2017-02-14', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
-(7772, 'BX1643', '', 'Rocking Animal #3', '062243337855', '2017-02-14', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
-(7773, 'BX1643Z', '', 'Rocking Animal #3', '062243337848', '2017-02-14', '0000-00-00', 'B', 'B. ', 'BX', '', '');
+(7771, 'BX1642Z', '', 'Rocking Zebra', '062243337831', '2017-02-14', '0000-00-00', 'B', 'B. ', 'BX', '', '');
 INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdate`, `updatedate`, `brand_code`, `brand_name`, `brand_prefix`, `extension`, `language`) VALUES
+(7772, 'BX1643', '', 'Rocking Animal #3', '062243337855', '2017-02-14', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
+(7773, 'BX1643Z', '', 'Rocking Animal #3', '062243337848', '2017-02-14', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
 (7774, 'BX1644', '', 'Lobster Pull Toy w/Sounds', '062243337862', '2017-02-14', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
 (7775, 'BX1644Z', '', 'Lobster Pull Toy w/Sounds', '062243337886', '2017-02-14', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
 (7776, 'BX1645', '', 'Table Top Simon Says ', '062243337909', '2017-02-14', '0000-00-00', 'B', 'B. ', 'BX', '', ''),
@@ -8152,9 +8152,9 @@ INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdat
 (8080, 'BX3135G', '', 'B.eauty Pops Jr. Each Color in PDQ', '062243282247', '2014-05-22', '0000-00-00', 'BASS', 'B. Assortments', 'BX', '', ''),
 (8081, 'BX3136G', '', 'PDQ: BX1298 Mini┬áSquirts ┬á(Cat + Elephant + Turtle) , BX1300 OddBalls (Sea, Olive +Papaya), BX1301 PDQ OddBalls (Lime Fuchsia + Plum)', '062243282346', '2014-05-22', '0000-00-00', 'BASS', 'B. Assortments', 'BX', '', ''),
 (8082, 'BX3136GTZ', '', 'Intl PDQ: BX1298Z Mini┬áSquirts ┬á(Cat + Elephant + Turtle) Intl, BX1300Z OddBalls (Sea, Olive +Papaya), BX1301Z PDQ OddBalls (Lime Fuchsia + Plum)', '062243282308', '2014-05-22', '0000-00-00', 'BASS', 'B. Assortments', 'BX', '', ''),
-(8083, 'BX3137', '', 'Assort: BX1254C2 beads┬áin a jar 300 pcs. & BX1232 beads in a jar ┬á275 pcs.', '062243283701', '2014-06-27', '0000-00-00', 'BASS', 'B. Assortments', 'BX', '', ''),
-(8084, 'BX3137Z', '', 'Assort: BX1254C2Z beads┬áin a jar 300 pcs. & BX1232Z beads in a jar ┬á275 pcs. Intl', '062243290723', '2014-10-14', '0000-00-00', 'BASS', 'B. Assortments', 'BX', '', '');
+(8083, 'BX3137', '', 'Assort: BX1254C2 beads┬áin a jar 300 pcs. & BX1232 beads in a jar ┬á275 pcs.', '062243283701', '2014-06-27', '0000-00-00', 'BASS', 'B. Assortments', 'BX', '', '');
 INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdate`, `updatedate`, `brand_code`, `brand_name`, `brand_prefix`, `extension`, `language`) VALUES
+(8084, 'BX3137Z', '', 'Assort: BX1254C2Z beads┬áin a jar 300 pcs. & BX1232Z beads in a jar ┬á275 pcs. Intl', '062243290723', '2014-10-14', '0000-00-00', 'BASS', 'B. Assortments', 'BX', '', ''),
 (8085, 'BX3138G', '', 'PDQ: B.eauty Pops + PopArty 6x Mixed Tubes in PDQ (50 pcs each): BX1377, BX1378, BX1379, BX1399, BX1400, BX1401', '062243283718', '2014-06-30', '0000-00-00', 'BASS', 'B. Assortments', 'BX', '', ''),
 (8086, 'BX3138GTZ', '', 'B.eauty pops & Poparty Jr Bead Asst Intl', '062243284517', '2014-07-23', '0000-00-00', 'BASS', 'B. Assortments', 'BX', '', ''),
 (8087, 'BX3138ZC6', '', 'B.eauty Jr and Pop-Arty Jr Beads International (casepack of 6)', '062243327092', '2016-08-02', '0000-00-00', 'BASS', 'B. Assortments', 'BX', '', ''),
@@ -8482,9 +8482,9 @@ INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdat
 (8409, 'CF2202Z', '', 'IntÔÇÖl CF2001 Night light new colorway Closed Box pkg', '062243301726', '2015-07-02', '0000-00-00', 'CF', 'Craftabelle', 'CF', '', ''),
 (8410, 'CF2203', '', 'CF2007 Fairy Light new colorway Closed Box pkg', '062243283220', '2014-06-03', '0000-00-00', 'CF', 'Craftabelle', 'CF', '', ''),
 (8411, 'CF2204', '', 'CF2012 Pinboard new colorway Closed Box pkg', '062243283251', '2014-06-03', '0000-00-00', 'CF', 'Craftabelle', 'CF', '', ''),
-(8412, 'CF2205', '', 'CF2014 Wood loom new projects Closed Box pkg', '062243283329', '2014-06-03', '0000-00-00', 'CF', 'Craftabelle', 'CF', '', ''),
-(8413, 'CF2205Z', '', 'IntÔÇÖl CF2014 Wood loom new projects Closed Box pkg', '062243301733', '2015-07-02', '0000-00-00', 'CF', 'Craftabelle', 'CF', '', '');
+(8412, 'CF2205', '', 'CF2014 Wood loom new projects Closed Box pkg', '062243283329', '2014-06-03', '0000-00-00', 'CF', 'Craftabelle', 'CF', '', '');
 INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdate`, `updatedate`, `brand_code`, `brand_name`, `brand_prefix`, `extension`, `language`) VALUES
+(8413, 'CF2205Z', '', 'IntÔÇÖl CF2014 Wood loom new projects Closed Box pkg', '062243301733', '2015-07-02', '0000-00-00', 'CF', 'Craftabelle', 'CF', '', ''),
 (8414, 'CF2206', '', 'CF2015 Chandelier new colorway Closed Box pkg', '062243283343', '2014-06-03', '0000-00-00', 'CF', 'Craftabelle', 'CF', '', ''),
 (8415, 'CF2207', '', 'CF2019 Large storage new colorway ', '062243283350', '2014-06-03', '0000-00-00', 'CF', 'Craftabelle', 'CF', '', ''),
 (8416, 'CF2207Z', '', 'CF2019 Large storage new colorway  INTL', '062243289468', '2014-09-23', '0000-00-00', 'CF', 'Craftabelle', 'CF', '', ''),
@@ -8806,9 +8806,9 @@ INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdat
 (8732, 'GG57028', '', 'Light Up Shoe PDQ: Style #5', '062243345522', '2017-06-15', '0000-00-00', 'GGACC', 'Glitter Girls Accessories', 'GG', '', ''),
 (8733, 'GG57029', '', 'Light Up Shoe PDQ: Style #6', '062243345539', '2017-06-15', '0000-00-00', 'GGACC', 'Glitter Girls Accessories', 'GG', '', ''),
 (8734, 'GG57030', '', 'Light Up Shoe PDQ: Style #7', '062243345546', '2017-06-15', '0000-00-00', 'GGACC', 'Glitter Girls Accessories', 'GG', '', ''),
-(8735, 'GG57031', '', 'Light Up Shoe PDQ: Style #8', '062243345553', '2017-06-15', '0000-00-00', 'GGACC', 'Glitter Girls Accessories', 'GG', '', ''),
-(8736, 'GG57032', '', 'Light Up Shoe PDQ: Style #9', '062243345560', '2017-06-15', '0000-00-00', 'GGACC', 'Glitter Girls Accessories', 'GG', '', '');
+(8735, 'GG57031', '', 'Light Up Shoe PDQ: Style #8', '062243345553', '2017-06-15', '0000-00-00', 'GGACC', 'Glitter Girls Accessories', 'GG', '', '');
 INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdate`, `updatedate`, `brand_code`, `brand_name`, `brand_prefix`, `extension`, `language`) VALUES
+(8736, 'GG57032', '', 'Light Up Shoe PDQ: Style #9', '062243345560', '2017-06-15', '0000-00-00', 'GGACC', 'Glitter Girls Accessories', 'GG', '', ''),
 (8737, 'GG57033G', '', 'Fashion PDQ- Purses and Bows', '062243345577', '2017-06-15', '0000-00-00', 'GGACC', 'Glitter Girls Accessories', 'GG', '', ''),
 (8738, 'GG57034', '', 'Fashion PDQ- Purses and Bows: Style #1', '062243345584', '2017-06-15', '0000-00-00', 'GGACC', 'Glitter Girls Accessories', 'GG', '', ''),
 (8739, 'GG57035', '', 'Fashion PDQ- Purses and Bows: Style #2', '062243345591', '2017-06-15', '0000-00-00', 'GGACC', 'Glitter Girls Accessories', 'GG', '', ''),
@@ -9168,9 +9168,9 @@ INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdat
 (9093, 'LO37031', '', 'Dollhouse Furniture sets- Urban Living Room ', '062243311817', '2015-12-01', '0000-00-00', 'LOACC', 'LORI Accessories', 'LO', '', ''),
 (9094, 'LO37031Z', '', 'Dollhouse Furniture sets- Urban Living Room IntÔÇÖl', '062243326958', '2016-07-29', '0000-00-00', 'LOACC', 'LORI Accessories', 'LO', '', ''),
 (9095, 'LO37032', '', 'Dollhouse Furniture sets- Outdoor Furniture', '062243311824', '2015-12-01', '0000-00-00', 'LOACC', 'LORI Accessories', 'LO', '', ''),
-(9096, 'LO37032Z', '', 'Dollhouse Furniture sets- Outdoor Furniture IntÔÇÖl', '062243326965', '2016-07-29', '0000-00-00', 'LOACC', 'LORI Accessories', 'LO', '', ''),
-(9097, 'LO37033', '', 'Pick Up Truck for 6ÔÇØ dolls', '062243315914', '2016-01-18', '0000-00-00', 'LOACC', 'LORI Accessories', 'LO', '', '');
+(9096, 'LO37032Z', '', 'Dollhouse Furniture sets- Outdoor Furniture IntÔÇÖl', '062243326965', '2016-07-29', '0000-00-00', 'LOACC', 'LORI Accessories', 'LO', '', '');
 INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdate`, `updatedate`, `brand_code`, `brand_name`, `brand_prefix`, `extension`, `language`) VALUES
+(9097, 'LO37033', '', 'Pick Up Truck for 6ÔÇØ dolls', '062243315914', '2016-01-18', '0000-00-00', 'LOACC', 'LORI Accessories', 'LO', '', ''),
 (9098, 'LO37033Z', '', 'Pick Up Truck for 6ÔÇØ dolls IntÔÇÖl', '062243329027', '2016-09-02', '0000-00-00', 'LOACC', 'LORI Accessories', 'LO', '', ''),
 (9099, 'LO37034', '', 'Vespa for 6ÔÇØ doll with side car', '062243317840', '2016-03-03', '0000-00-00', 'LOACC', 'LORI Accessories', 'LO', '', ''),
 (9100, 'LO37034Z', '', 'Vespa for 6ÔÇØ doll with side car IntÔÇÖl', '062243327115', '2016-08-04', '0000-00-00', 'LOACC', 'LORI Accessories', 'LO', '', ''),
@@ -9499,9 +9499,9 @@ INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdat
 (9423, 'OG1235', '', 'Outfit # 1- ┬á star print 2pc pyjama set', '062243277427', '2014-03-11', '0000-00-00', 'OG', 'OG Me and You', 'OG', '', ''),
 (9424, 'OG1236', '', 'Outfit # 1- ┬á star print 2pc pyjama set', '062243277434', '2014-03-11', '0000-00-00', 'OG', 'OG Me and You', 'OG', '', ''),
 (9425, 'OG1236X', '', 'Outfit # 1- ┬á star print 2pc pyjama set', '062243277441', '2014-03-11', '0000-00-00', 'OG', 'OG Me and You', 'OG', '', ''),
-(9426, 'OG1237', '', 'Pyjama w/ stars size 7 (S)', '062243291591', '2014-10-24', '0000-00-00', 'OG', 'OG Me and You', 'OG', '', ''),
-(9427, 'OG1244', '', 'Outfit # 2 ÔÇô stripe dress pyjama┬áset┬á', '062243277458', '2014-03-11', '0000-00-00', 'OG', 'OG Me and You', 'OG', '', '');
+(9426, 'OG1237', '', 'Pyjama w/ stars size 7 (S)', '062243291591', '2014-10-24', '0000-00-00', 'OG', 'OG Me and You', 'OG', '', '');
 INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdate`, `updatedate`, `brand_code`, `brand_name`, `brand_prefix`, `extension`, `language`) VALUES
+(9427, 'OG1244', '', 'Outfit # 2 ÔÇô stripe dress pyjama┬áset┬á', '062243277458', '2014-03-11', '0000-00-00', 'OG', 'OG Me and You', 'OG', '', ''),
 (9428, 'OG1245', '', 'Outfit # 2 ÔÇô stripe dress pyjama┬áset┬á', '062243277465', '2014-03-11', '0000-00-00', 'OG', 'OG Me and You', 'OG', '', ''),
 (9429, 'OG1246', '', 'Outfit # 2 ÔÇô stripe dress pyjama┬á set\n', '062243277243', '2014-03-07', '0000-00-00', 'OG', 'OG Me and You', 'OG', '', ''),
 (9430, 'OG1246X', '', 'Outfit # 2 ÔÇô stripe dress pyjama┬áset', '062243277250', '2014-03-07', '0000-00-00', 'OG', 'OG Me and You', 'OG', '', ''),
@@ -9837,9 +9837,9 @@ INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdat
 (9760, 'OG4031', '', 'Doll/Girl Robe outfit #5 TEST (Wave 1) asst includes: OG1315, OG1317, OG1310', '062243289697', '2014-10-01', '0000-00-00', 'OGASS', 'OG Me and You Assortments', 'OG', '', ''),
 (9761, 'OG4031Z', '', 'Doll/Girl Robe outfit #5 TEST (Wave 1) asst includes: OG1315Z, OG1317Z, OG1310Z IntÔÇÖl', '062243307780', '2015-09-30', '0000-00-00', 'OGASS', 'OG Me and You Assortments', 'OG', '', ''),
 (9762, 'OG4032', '', 'Doll/Girl 2 pc outfit #1 (Wave 2) asst include: OG1325, OG1327, OG1320', '062243289734', '2014-10-01', '0000-00-00', 'OGASS', 'OG Me and You Assortments', 'OG', '', ''),
-(9763, 'OG4033', '', 'Doll/Girl Pyjama outfit #2 (Wave 2) asst includes: OG1335, OG1337, OG1330', '062243289772', '2014-10-01', '0000-00-00', 'OGASS', 'OG Me and You Assortments', 'OG', '', ''),
-(9764, 'OG4033Z', '', 'Doll/Girl Pyjama outfit #2 (Wave 2) IntÔÇÖl asst includes: OG1335Z, OG1337Z, OG1330Z', '062243309579', '2015-10-27', '0000-00-00', 'OGASS', 'OG Me and You Assortments', 'OG', '', '');
+(9763, 'OG4033', '', 'Doll/Girl Pyjama outfit #2 (Wave 2) asst includes: OG1335, OG1337, OG1330', '062243289772', '2014-10-01', '0000-00-00', 'OGASS', 'OG Me and You Assortments', 'OG', '', '');
 INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdate`, `updatedate`, `brand_code`, `brand_name`, `brand_prefix`, `extension`, `language`) VALUES
+(9764, 'OG4033Z', '', 'Doll/Girl Pyjama outfit #2 (Wave 2) IntÔÇÖl asst includes: OG1335Z, OG1337Z, OG1330Z', '062243309579', '2015-10-27', '0000-00-00', 'OGASS', 'OG Me and You Assortments', 'OG', '', ''),
 (9765, 'OG4034', '', 'Doll/Girl 2 pc Jumper Dress and Leggings TEST (Wave 2) asst includes: OG1345, OG1347, OG1340', '062243289819', '2014-10-01', '0000-00-00', 'OGASS', 'OG Me and You Assortments', 'OG', '', ''),
 (9766, 'OG4034Z', '', 'Doll/Girl 2 pc Jumper Dress and Leggings TEST (Wave 2) asst includes: OG1345, OG1347, OG1340 IntÔÇÖl', '062243319547', '2016-04-22', '0000-00-00', 'OGASS', 'OG Me and You Assortments', 'OG', '', ''),
 (9767, 'OG4035', '', 'Doll/Girl Pyjama outfit #4 TEST (Wave 2) asst includes: OG1355, OG1357, OG1350', '062243289857', '2014-10-01', '0000-00-00', 'OGASS', 'OG Me and You Assortments', 'OG', '', ''),
@@ -10168,9 +10168,9 @@ INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdat
 (10090, 'ST4091H', '', 'ASST ST8190H┬á┬á\nST8158H┬á', '062243260481', '2013-01-22', '0000-00-00', 'STASS', 'Pucci Pups Assortments', 'ST', '', ''),
 (10091, 'ST4091HCP', '', 'ASST ST8190H┬á┬á\nST8158H┬á', '062243260481', '2013-04-03', '0000-00-00', 'STASS', 'Pucci Pups Assortments', 'ST', '', ''),
 (10092, 'ST4091Z', '', 'ASST ST8190Z\nST8158Z', '062243267947', '2013-07-09', '0000-00-00', 'STASS', 'Pucci Pups Assortments', 'ST', '', ''),
-(10093, 'ST4092Z', '', 'ASST ST8228Z +ST8266Z', '062243260979', '2013-01-31', '0000-00-00', 'STASS', 'Pucci Pups Assortments', 'ST', '', ''),
-(10094, 'ST4093H', '', 'ASST ST+ST8236H +ST8207H+ ST8267H', '062243260993', '2013-01-31', '0000-00-00', 'STASS', 'Pucci Pups Assortments', 'ST', '', '');
+(10093, 'ST4092Z', '', 'ASST ST8228Z +ST8266Z', '062243260979', '2013-01-31', '0000-00-00', 'STASS', 'Pucci Pups Assortments', 'ST', '', '');
 INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdate`, `updatedate`, `brand_code`, `brand_name`, `brand_prefix`, `extension`, `language`) VALUES
+(10094, 'ST4093H', '', 'ASST ST+ST8236H +ST8207H+ ST8267H', '062243260993', '2013-01-31', '0000-00-00', 'STASS', 'Pucci Pups Assortments', 'ST', '', ''),
 (10095, 'ST4093Z', '', 'ASST ST8236Z+ST8207Z+ ST8267Z', '062243260986', '2013-01-31', '0000-00-00', 'STASS', 'Pucci Pups Assortments', 'ST', '', ''),
 (10096, 'ST4095H', '', 'ASST ST8209H +ST8215H┬á+\nST8216H┬á+ST8137H┬á┬á┬á┬á', '062243261051', '2013-01-31', '0000-00-00', 'STASS', 'Pucci Pups Assortments', 'ST', '', ''),
 (10097, 'ST4095X', '', 'Assortment,  ST8209X, BX8215X, BX8216X, BX8137X', '062243264564', '2013-05-16', '0000-00-00', 'STASS', 'Pucci Pups Assortments', 'ST', '', ''),
@@ -10442,9 +10442,9 @@ INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdat
 (10363, 'ST8142Z', '', 'Shaggy┬áPurple┬áPosh Bag┬á& maltese pup\n', '062243247543', '2011-10-27', '0000-00-00', 'STPLU', 'Pucci Pups Plush', 'ST', '', ''),
 (10364, 'ST8143Z', '', 'Fuschia Animal┬áPosh Bag┬á& Yorkshire ┬ápup\n', '062243247550', '2011-10-27', '0000-00-00', 'STPLU', 'Pucci Pups Plush', 'ST', '', ''),
 (10365, 'ST8144Z', '', 'Pink Sparkle┬á┬áChic Bag┬á&┬áBrown┬áShih Tzu pup\n', '062243247567', '2011-10-27', '0000-00-00', 'STPLU', 'Pucci Pups Plush', 'ST', '', ''),
-(10366, 'ST8145Z', '', 'Shaggy┬áPurple┬áChic Bag┬á& maltese pup\n', '062243247574', '2011-10-27', '0000-00-00', 'STPLU', 'Pucci Pups Plush', 'ST', '', ''),
-(10367, 'ST8146Z', '', 'Fuschia Animal┬áChic Bag┬á& Yorkshire ┬ápup\n', '062243247581', '2011-10-27', '0000-00-00', 'STPLU', 'Pucci Pups Plush', 'ST', '', '');
+(10366, 'ST8145Z', '', 'Shaggy┬áPurple┬áChic Bag┬á& maltese pup\n', '062243247574', '2011-10-27', '0000-00-00', 'STPLU', 'Pucci Pups Plush', 'ST', '', '');
 INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdate`, `updatedate`, `brand_code`, `brand_name`, `brand_prefix`, `extension`, `language`) VALUES
+(10367, 'ST8146Z', '', 'Fuschia Animal┬áChic Bag┬á& Yorkshire ┬ápup\n', '062243247581', '2011-10-27', '0000-00-00', 'STPLU', 'Pucci Pups Plush', 'ST', '', ''),
 (10368, 'ST8147Z', '', 'Pink Sparkle┬á┬áTravel Bag┬á&┬áBrown┬áShih Tzu pup\n', '062243247598', '2011-10-27', '0000-00-00', 'STPLU', 'Pucci Pups Plush', 'ST', '', ''),
 (10369, 'ST8148Z', '', 'Shaggy┬áPurple┬áTravel Bag┬á& maltese pup\n', '062243247604', '2011-10-27', '0000-00-00', 'STPLU', 'Pucci Pups Plush', 'ST', '', ''),
 (10370, 'ST8149Z', '', 'Fuschia Animal┬áTravel Bag┬á& Yorkshire ┬ápup\n', '062243247611', '2011-10-27', '0000-00-00', 'STPLU', 'Pucci Pups Plush', 'ST', '', ''),
@@ -10765,9 +10765,9 @@ INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdat
 (10685, 'ST9004A', '', 'BWLP pet sets / Fall 08 / Dalmatian  \n\n', '062243203730', '2007-11-29', '0000-00-00', 'STELEC', 'Pucci Pups Electronic', 'ST', '', ''),
 (10686, 'ST9004N', '', 'Pucci pet sets // dalmatian', '062243234581', '2010-05-05', '0000-00-00', 'STELEC', 'Pucci Pups Electronic', 'ST', '', ''),
 (10687, 'ST9004Q', '', 'Bil. BWLP pet sets /Dalmatian  \nsame size as st9004N\n', '062243240971', '2011-01-07', '0000-00-00', 'STELEC', 'Pucci Pups Electronic', 'ST', '', ''),
-(10688, 'ST9004Z', '', 'BWLP pet sets /Dalmatian  \n\n', '062243232259', '2010-02-05', '0000-00-00', 'STELEC', 'Pucci Pups Electronic', 'ST', '', ''),
-(10689, 'ST9005R', '', 'Ass\'t BWLP activity sets / Fall 08 / (ST9006-7R)  \n', '062243203747', '2007-11-29', '0000-00-00', 'STELEC', 'Pucci Pups Electronic', 'ST', '', '');
+(10688, 'ST9004Z', '', 'BWLP pet sets /Dalmatian  \n\n', '062243232259', '2010-02-05', '0000-00-00', 'STELEC', 'Pucci Pups Electronic', 'ST', '', '');
 INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdate`, `updatedate`, `brand_code`, `brand_name`, `brand_prefix`, `extension`, `language`) VALUES
+(10689, 'ST9005R', '', 'Ass\'t BWLP activity sets / Fall 08 / (ST9006-7R)  \n', '062243203747', '2007-11-29', '0000-00-00', 'STELEC', 'Pucci Pups Electronic', 'ST', '', ''),
 (10690, 'ST9006AC2', '', 'MASTER ASST Pucci pups & friends electronic pet sets WM FALL 2010 USA ASST ST9023A, ST9024A,ST9025A', '062243217522', '2009-01-14', '0000-00-00', 'STELEC', 'Pucci Pups Electronic', 'ST', '', ''),
 (10691, 'ST9006N', '', 'Flocked Pucci series  may 2010 pkg\n \n', '062243235007', '2010-05-20', '0000-00-00', 'STELEC', 'Pucci Pups Electronic', 'ST', '', ''),
 (10692, 'ST9006Q', '', 'Bil Flocked Pucci series  red planet 2011 \n \n', '062243240926', '2011-01-07', '0000-00-00', 'STELEC', 'Pucci Pups Electronic', 'ST', '', ''),
@@ -11115,9 +11115,9 @@ INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdat
 (11034, 'WH1049Z', '', 'Pocket Series: Flatbed Truck Orange', '062243344945', '2017-06-13', '0000-00-00', 'WH', 'Driven', 'WH', '', ''),
 (11035, 'WH1050', '', 'Pocket Series: Police Jeep', '062243339057', '2017-02-27', '0000-00-00', 'WH', 'Driven', 'WH', '', ''),
 (11036, 'WH1050Z', '', 'Pocket Series: Police Jeep', '062243344945', '2017-06-13', '0000-00-00', 'WH', 'Driven', 'WH', '', ''),
-(11037, 'WH1051', '', 'Pocket Series: Bulldozer #2 Orange', '062243339057', '2017-02-27', '0000-00-00', 'WH', 'Driven', 'WH', '', ''),
-(11038, 'WH1051Z', '', 'Pocket Series: Bulldozer #2 Orange', '062243344945', '2017-06-13', '0000-00-00', 'WH', 'Driven', 'WH', '', '');
+(11037, 'WH1051', '', 'Pocket Series: Bulldozer #2 Orange', '062243339057', '2017-02-27', '0000-00-00', 'WH', 'Driven', 'WH', '', '');
 INSERT INTO `items` (`id`, `code`, `ncode`, `description`, `barcode`, `createdate`, `updatedate`, `brand_code`, `brand_name`, `brand_prefix`, `extension`, `language`) VALUES
+(11038, 'WH1051Z', '', 'Pocket Series: Bulldozer #2 Orange', '062243344945', '2017-06-13', '0000-00-00', 'WH', 'Driven', 'WH', '', ''),
 (11039, 'WH1052', '', 'Pocket Series: Bulldozer #2 Yellow', '062243339057', '2017-02-27', '0000-00-00', 'WH', 'Driven', 'WH', '', ''),
 (11040, 'WH1052Z', '', 'Pocket Series: Bulldozer #2 Yellow', '062243344945', '2017-06-13', '0000-00-00', 'WH', 'Driven', 'WH', '', ''),
 (11041, 'WH1053', '', 'Pocket Series: Logging Truck Dark Green and Yellow', '062243339057', '2017-02-27', '0000-00-00', 'WH', 'Driven', 'WH', '', ''),
