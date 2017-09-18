@@ -10,11 +10,13 @@
        class="table table-striped">
     <thead>    
     <tr class="row">
-            <th data-field="code"  data-sortable="true"  class="col-sm-2">Code</th>  
-            <th data-field="name"  data-sortable="true"  class="col-sm-3">Name</th>        
-            <th data-field="prefix"  data-sortable="true" class="col-sm-2">Prefix</th>
-            <th data-field="new_item_number"  data-sortable="true" class="col-sm-2">New Item Number</th>
-            <check  if="{{ @role != 2 }}" class="col-sm-3">
+            <th data-field="code"  data-sortable="true"  class="col-sm-1">Code</th>  
+            <th data-field="name"  data-sortable="true"  class="col-sm-2">Name</th>        
+            <th data-field="prefix"  data-sortable="true" class="col-sm-1">Prefix</th>
+            <th data-field="new_number"  data-sortable="true" class="col-sm-1">New Number</th>
+            <th data-field="first_number"  data-sortable="true" class="col-sm-1">First Number</th>
+            <th data-field="last_number"  data-sortable="true" class="col-sm-1">Last Number</th>
+            <check  if="{{ @role != 2 }}" class="col-sm-5">
                 <th>Action</th>
             </check>
         </tr>
@@ -25,7 +27,9 @@
                 <td>{{ trim(@brand.code) }}</td> 
                 <td>{{ trim(@brand.name) }}</td>            
                 <td>{{ trim(@brand.prefix) }}</td>
-                <td>{{ trim(@brand.new_item_number) }}</td>
+                <td>{{ trim(@brand.new_number) }}</td>
+                <td>{{ trim(@brand.first_number) }}</td>
+                <td>{{ trim(@brand.last_number) }}</td>
                 <check  if="{{ @role != 2 }}">
                     <td>
                         <a href="{{ @BASE.'/brand/update/'. @brand.id }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp; Edit</a>
