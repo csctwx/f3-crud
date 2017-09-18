@@ -1,8 +1,8 @@
-<form action="{{ @BASE.'/language/update' }}" method="post"  class="form-horizontal">
+<form action="{{ @BASE.'/item/update' }}" method="post"  class="form-horizontal">  
   <div class="form-group">
-    <label class="control-label col-sm-2" for="language">Language:</label>
+    <label class="control-label col-sm-2" for="code">Item Code:</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="language" name="language" value="{{ @POST.language }}">
+      <input type="text" class="form-control" id="code" name="upc" value="{{ @POST.code }}">
     </div>
   </div>
   <div class="form-group">
@@ -10,12 +10,24 @@
     <div class="col-sm-10">
       <input type="text" class="form-control" id="description" name="description" value="{{ @POST.description }}">
     </div>
-  </div> 
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="barcode">Barcode:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="barcode" name="barcode" value="{{ @POST.barcode }}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="upc">Created Date:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="createdate" name="createdate" value="{{ @POST.createdate }}">
+    </div>
+  </div>    
   <div class="form-group"> 
     <div class="col-sm-offset-2 col-sm-10">
        <input type="hidden" name="id" value="{{ @POST.id }}" />
        <input type="hidden" name="update" value="update" />
-       <a href="{{ @BASE.'/languages' }}" class="btn btn-primary">Back To List</a>
+       <a href="{{ @BASE.'/items' }}" class="btn btn-primary">Back To List</a>
        <button type="submit" class="btn btn-primary pull-right">Update</button>
     </div>
   </div>
