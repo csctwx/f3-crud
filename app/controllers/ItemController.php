@@ -56,6 +56,14 @@ class ItemController extends Controller {
             $this->f3->reroute('/item/success/New item Created');
         } else
         {
+            //create model data
+            $item = new Brand($this->db);
+            $this->f3->set('brands',$item->all());
+            $item = new Extension($this->db);
+            $this->f3->set('extensions',$item->all());
+            $item = new Language($this->db);
+            $this->f3->set('languages',$item->all());
+
             $this->f3->set('page_head','Create item');
             $this->f3->set('view','item/create.htm');
         }
