@@ -46,6 +46,24 @@
                     }
                 }
             });
+            $("#brand,#extension,#language").change(function() {
+              var brands = $("#brand").val().split(',');
+              var brand_id = brands[0];
+              var brand_code = brands[1];
+              var brand_prefix = brands[2]; 
+              var brand_number = brands[3];
+              var brand = brand_prefix + brand_number; 
+              var extension = $("#extension").val();              
+              var language = $("#language").val();
+              var item_number = brand + extension + language;   
+              console.log(item_number);            
+              $("#code").val(item_number);
+              $("#brand_code").val(brand_code);
+              $("#brand_prefix").val(brand_prefix);
+
+              $("#brand_id").val(brand_id);
+              $("#new_number").val(parseInt(brand_number) + 1);
+            });
         });
         function operateFormatter(value, row, index) {
             if("{{ @role}}" != 2){

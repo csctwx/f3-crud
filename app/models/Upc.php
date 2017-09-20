@@ -1,9 +1,9 @@
 <?php
 
-class Brand extends DB\SQL\Mapper {
+class Upc extends DB\SQL\Mapper {
 
     public function __construct(DB\SQL $db) {
-        parent::__construct($db,'brands');
+        parent::__construct($db,'upc');
     }
 
     public function all() {
@@ -25,17 +25,9 @@ class Brand extends DB\SQL\Mapper {
         $this->load(array('name=?', $name));
     }
 
-    public function edit($id) {
-        $this->load(array('id=?',$id));
-        $this->copyFrom('POST'); 
-        echo "@string";       
-        $this->update();
-    }
-
-    public function editWithCode($id, $code) {
-        $this->load(array('id=?',$id));
-        $this->copyFrom('POST'); 
-        $this->code = $code;       
+    public function edit($company) {
+        $this->load(array('company=?',$company));
+        $this->copyFrom('POST');        
         $this->update();
     }
 

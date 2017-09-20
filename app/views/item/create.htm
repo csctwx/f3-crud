@@ -2,9 +2,10 @@
   <div class="form-group">
     <label class="control-label col-sm-2" for="brand_code">Brand:</label>
     <div class="col-sm-10"> 
-      <select class="form-control" id="brand_code" name="brand_code">
+      <select class="form-control" id="brand" name="brand">
+        <option value="" disabled="disabled">-Choose-</option>
         <repeat group="{{ @brands }}" value="{{ @brand }}">
-             <option value="{{ @brand.code }},{{ @brand.prefix }}">
+             <option value="{{ @brand.id }},{{ @brand.code }},{{ @brand.prefix }},{{ @brand.new_number }}">
                {{ @brand.name }}
              </option>
         </repeat>        
@@ -15,7 +16,7 @@
     <label class="control-label col-sm-2" for="extension">Extension:</label>
     <div class="col-sm-10"> 
       <select class="form-control" id="extension" name="extension">
-        <option value="">Select an extension</option>
+        <option value="">-Choose-</option>
         <repeat group="{{ @extensions }}" value="{{ @extension }}">
              <option value="{{ @extension.extension }}">
                {{ @extension.description }}
@@ -28,7 +29,7 @@
     <label class="control-label col-sm-2" for="language">Language:</label>
     <div class="col-sm-10"> 
       <select class="form-control" id="language" name="language">
-        <option value="">Select an language</option>
+        <option value="">-Choose-</option>
         <repeat group="{{ @languages }}" value="{{ @language }}">
              <option value="{{ @language.language }}">
                {{ @language.description }}
@@ -46,25 +47,29 @@
   <div class="form-group">
     <label class="control-label col-sm-2" for="code">Item Code:</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="code" name="code" value="{{@brands[0].new_number}}" readonly="readonly">
+      <input type="text" class="form-control" id="code" name="code" value="{{@brands[0].prefix.@brands[0].new_number}}" readonly="readonly">
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-2" for="barcode">Barcode:</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="barcode" name="barcode" value="" readonly="readonly">
+      <input type="text" class="form-control" id="barcode" name="barcode" value="{{@upc}}" readonly="readonly">
     </div>
-  </div>
-  <!-- <div class="form-group">
-    <label class="control-label col-sm-2" for="upc">Created Date:</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="createdate" name="createdate" value="">
-    </div>
-  </div>     -->
+  </div>  
   <div class="form-group"> 
     <div class="col-sm-offset-2 col-sm-10">       
        <input type="hidden" name="create" value="create" />
-       <input type="hidden" class="form-control" id="createdate" name="createdate" value="">
+       <input type="hidden" class="form-control" id="brand_code" name="brand_code" value="{{@brands[0].code}}">
+       <!-- <input type="hidden" class="form-control" id="brand_name" name="brand_name" value="{{@brands[0].name}}"> -->
+       <input type="hidden" class="form-control" id="brand_prefix" name="brand_prefix" value="{{@brands[0].prefix}}">
+       <input type="hidden" class="form-control" id="createdate" name="createdate" value="{{@date_now}}">
+       <input type="hidden" class="form-control" id="updatedate" name="updatedate" value="{{@date_now}}">
+
+       <input type="hidden" class="form-control" id="company" name="company" value="{{@company}}">
+       <input type="hidden" class="form-control" id="latest_number" name="latest_number" value="{{@latest_number}}">
+
+       <input type="hidden" class="form-control" id="brand_id" name="brand_id" value="{{@brands[0].id}}">
+       <input type="hidden" class="form-control" id="new_number" name="new_number" value="{{@brands[0].new_number+1}}">
        <a href="{{ @BASE.'/items' }}" class="btn btn-primary">Back To List</a>
        <button type="submit" class="btn btn-primary pull-right">Add Item</button>
     </div>

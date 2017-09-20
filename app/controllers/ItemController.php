@@ -48,21 +48,36 @@ class ItemController extends Controller {
     {   if($this->f3->get('role') == 2 ){
           $this->f3->reroute('/items');
         }
+        $brand = new Brand($this->db);
+        $upc = new Upc($this->db);
         if($this->f3->exists('POST.create'))
         {
             $item = new Item($this->db);
             $item->add();
-
+            
+            $upc->edit($this->f3->get('POST.company'));
+            $brand->editWithCode($this->f3->get('POST.brand_id'),$this->f3->get('POST.brand_code'));
             $this->f3->reroute('/item/success/New item Created');
         } else
         {
             //create model data
-            $item = new Brand($this->db);
-            $this->f3->set('brands',$item->all());
-            $item = new Extension($this->db);
-            $this->f3->set('extensions',$item->all());
-            $item = new Language($this->db);
-            $this->f3->set('languages',$item->all());
+            
+            $this->f3->set('brands',$brand->all());
+            $extension = new Extension($this->db);
+            $this->f3->set('extensions',$extension->all());
+            $language = new Language($this->db);
+            $this->f3->set('languages',$language->all());
+            
+            $upcItem = $upc->all()[0];             
+            $upcNumber = $upcItem->company.$upcItem->latest_number;            
+            $upcFull = $upcNumber.Util::generate_checkdigit($upcNumber);            
+            $this->f3->set('upc',$upcFull);
+            
+            $dateNow = date("Y-m-d");
+            $this->f3->set('date_now',$dateNow);
+
+            $this->f3->set('company',$upcItem->company);
+            $this->f3->set('latest_number',($upcItem->latest_number+1));
 
             $this->f3->set('page_head','Create item');
             $this->f3->set('view','item/create.htm');
