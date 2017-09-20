@@ -35,7 +35,8 @@ class ItemController extends Controller {
                                     'code'=>$field->code,
                                     'description'=>$field->description,
                                     'barcode'=>$field->barcode,
-                                    'createdate'=>$field->createdate
+                                    'createdate'=>$field->createdate,
+                                    'updatedate'=>$field->updatedate
                                     ));
         }
         $data = array('total'=>$items['total'], 'rows'=>$rows);        
@@ -98,6 +99,10 @@ class ItemController extends Controller {
         {
             $item->getById($this->f3->get('PARAMS.id'));
             $this->f3->set('item',$item);
+
+            $dateNow = date("Y-m-d");
+            $this->f3->set('date_now',$dateNow);
+
             $this->f3->set('page_head','Update itemanguage');
             $this->f3->set('view','item/update.htm');
         }
