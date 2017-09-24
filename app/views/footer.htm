@@ -64,6 +64,18 @@
               $("#brand_id").val(brand_id);
               $("#new_number").val(parseInt(brand_number) + 1);
             });
+
+            $("#test").click(function(){
+              console.log("test");
+              var test = $.fn.bootstrapTable;
+              test.options.pageNumber = 50;
+
+              test.initServer();
+        
+
+        test.trigger('page-change', test.options.pageNumber, test.options.pageSize);
+
+            });
         });
         function operateFormatter(value, row, index) {
             if("{{ @role}}" != 2){
