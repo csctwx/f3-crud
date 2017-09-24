@@ -1,7 +1,17 @@
-UPDATE `items` SET `code`=CONCAT(`brand_prefix`,`code`) WHERE `code` RLIKE '^[^A-Z]';
-UPDATE `items` SET `brand_code`=CONCAT(`brand_code`,"A") WHERE `brand_code`="BDDIORAM";
-UPDATE `items` SET `brand_prefix`=CONCAT(`brand_prefix`,"P") WHERE `brand_code`="BDDIORAMA";
+-- UPDATE `items` SET `code`=CONCAT(`brand_prefix`,`code`) WHERE `code` RLIKE '^[^A-Z]';
+-- UPDATE `items` SET `brand_code`=CONCAT(`brand_code`,"A") WHERE `brand_code`="BDDIORAM";
+-- UPDATE `items` SET `brand_prefix`=CONCAT(`brand_prefix`,"P") WHERE `brand_code`="BDDIORAMA";
 UPDATE `items` INNER JOIN `brands` ON items.brand_code = brands.code SET `brand_prefix`=brands.prefix;
+
+DELETE FROM `items` WHERE `brand_code`="ENINF";
+DELETE FROM `items` WHERE `brand_code`="ENPLU";
+DELETE FROM `items` WHERE `brand_code`="ENTOD";
+DELETE FROM `items` WHERE `brand_code`="GGEVENT";
+DELETE FROM `items` WHERE `brand_code`="MC";
+
+DELETE FROM `items` WHERE `brand_code`="VOASS";
+
+
 
 UPDATE `items` SET `ncode`=LEFT(code,length(code)-1), `language`='Z'  WHERE `code` LIKE '%Z';
 UPDATE `items` SET `ncode`=LEFT(code,length(code)-2), `language`='CC'  WHERE `code` LIKE '%CC';
@@ -26,6 +36,8 @@ UPDATE `items` SET `ncode`=LEFT(ncode,length(ncode)-2), `extension`='IM'  WHERE 
 UPDATE `items` SET `ncode`=LEFT(ncode,length(ncode)-2), `extension`='IT'  WHERE `ncode` LIKE '%IT';
 UPDATE `items` SET `ncode`=LEFT(ncode,length(ncode)-1), `extension`='K'  WHERE `ncode` LIKE '%K';
 UPDATE `items` SET `ncode`=LEFT(ncode,length(ncode)-1), `extension`='T'  WHERE `ncode` LIKE '%T';
+
+UPDATE `items` SET `updatedate`=`createdate`;
 
 SELECT * FROM `items` WHERE `code` LIKE "BDDISP%";
 SELECT * FROM `items` LEFT JOIN `brands` ON items.brand_code = brands.code WHERE brands.code IS NULL OR brands.code = '';
