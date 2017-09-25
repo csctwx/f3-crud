@@ -197,6 +197,7 @@ input[type="text"] {
     border: 1px solid #ddd;
     width: 50px;
     margin-right: 5px;
+    border-radius: 4px;
 }
 
 #page-number-bt {
