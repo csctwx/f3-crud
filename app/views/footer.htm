@@ -65,17 +65,22 @@
               $("#new_number").val(parseInt(brand_number) + 1);
             });
 
-            $("#test").click(function(){
-              console.log("test");
-              var test = $.fn.bootstrapTable;
-              test.options.pageNumber = 50;
-
-              test.initServer();
-        
-
-        test.trigger('page-change', test.options.pageNumber, test.options.pageSize);
-
-            });
+            if($("#item-table").length){
+              setInterval(function(){
+                if($('#page-number').length == 0){
+                  $("ul.pagination").prepend('<li><input type="text" id="page-number" /><button id="page-number-bt" class="btn btn-primary">Go</button><li>');
+                  $("#page-number-bt").click(function(){  
+                    var newPage = $('#page-number').val();  
+                    var lastPage = $('.page-last a').text();  
+                    if (/^\d+$/.test(newPage)) {
+                      $(".page-number:not('.active'):first a").text(newPage).click(); 
+                    }        
+                            
+                  });
+                }
+                
+              }, 500);
+            }           
         });
         function operateFormatter(value, row, index) {
             if("{{ @role}}" != 2){

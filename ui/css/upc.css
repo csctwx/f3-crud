@@ -183,3 +183,32 @@ input[type="text"] {
   border-top-right-radius: 0;
 }
 
+#page-number {
+    padding: 6px 12px;
+    line-height: 1.428571429;
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    width: 50px;
+    margin-right: 5px;
+}
+
+#page-number-bt {
+    padding: 6px 12px;
+    line-height: 1.428571429;
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+}
+
