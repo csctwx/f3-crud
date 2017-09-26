@@ -18,6 +18,7 @@ class Item extends DB\SQL\Mapper {
     public function add() {
         $this->copyFrom('POST');        
         $this->save();
+        return $this->code;
     }
 
     public function getById($id) {

@@ -1,0 +1,40 @@
+<form action="{{ @BASE.'/item/delete' }}" method="post"  class="form-horizontal">  
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="code">Item Code:</label>
+    <div class="col-sm-10">
+      {{ @POST.code }}
+    </div>
+  </div>  
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="barcode">Barcode:</label>
+    <div class="col-sm-10">
+      {{ @POST.barcode }}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="upc">Created Date:</label>
+    <div class="col-sm-10">
+      {{ @POST.createdate }}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="upc">Updated Date:</label>
+    <div class="col-sm-10">
+      {{ @POST.updatedate }}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="description">Description:</label>
+    <div class="col-sm-10">
+      {{ @POST.description }}
+    </div>
+  </div>    
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+       <input type="hidden" name="id" value="{{ @POST.id }}" />
+       <input type="hidden" name="delete" value="delete" />       
+       <a href="{{ @BASE.'/items' }}" class="btn btn-primary">Back To List</a>
+       <button type="submit" class="btn btn-primary pull-right">Delete</button>
+    </div>
+  </div>
+</form>

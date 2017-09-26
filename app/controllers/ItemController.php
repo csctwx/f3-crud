@@ -54,15 +54,14 @@ class ItemController extends Controller {
         if($this->f3->exists('POST.create'))
         {
             $item = new Item($this->db);
-            $item->add();
+            $itemCode = $item->add();
             
             $upc->edit($this->f3->get('POST.company'));
             $brand->editWithCode($this->f3->get('POST.brand_id'),$this->f3->get('POST.brand_code'));
-            $this->f3->reroute('/item/success/New item Created');
+            $this->f3->reroute('/item/success/New item '.$itemCode.' Created');
         } else
         {
-            //create model data
-            
+            //create model data            
             $this->f3->set('brands',$brand->all());
             $extension = new Extension($this->db);
             $this->f3->set('extensions',$extension->all());
@@ -93,8 +92,10 @@ class ItemController extends Controller {
 
         if($this->f3->exists('POST.update'))
         {
+            $item->getById($this->f3->get('POST.id'));
+            $itemCode = $item->code;  
             $item->edit($this->f3->get('POST.id'));
-            $this->f3->reroute('/item/success/item Updated');
+            $this->f3->reroute('/item/success/Item '.$itemCode.' Updated');
         } else
         {
             $item->getById($this->f3->get('PARAMS.id'));
@@ -103,20 +104,29 @@ class ItemController extends Controller {
             $dateNow = date("Y-m-d");
             $this->f3->set('date_now',$dateNow);
 
-            $this->f3->set('page_head','Update itemanguage');
+            $this->f3->set('page_head','Update Item');
             $this->f3->set('view','item/update.htm');
         }
 
     }
 
     public function delete()
-    {
-        if($this->f3->exists('PARAMS.id'))
+    {   $item = new Item($this->db);
+        if($this->f3->exists('POST.delete'))
         {
-            $item = new Item($this->db);
-            $item->delete($this->f3->get('PARAMS.id'));
+            $item->getById($this->f3->get('POST.id'));
+            $itemCode = $item->code;    
+            $item->delete($this->f3->get('POST.id'));
+            $this->f3->reroute('/item/success/Item '.$itemCode.' Deleted');
         }
+        else
+        {
+            $item->getById($this->f3->get('PARAMS.id'));
+            $this->f3->set('item',$item);           
 
-        $this->f3->reroute('/item/success/item Deleted');
+            $this->f3->set('page_head','Delete Item');
+            $this->f3->set('view','item/delete.htm');
+        }
+        
     }
 }
