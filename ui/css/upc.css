@@ -213,3 +213,7 @@ input[type="text"] {
     margin-right: 10px;
 }
 
+option:disabled {
+    background: #F0C0C0;
+}
+
