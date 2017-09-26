@@ -111,10 +111,8 @@ class ItemController extends Controller {
     public function delete()
     {   $item = new Item($this->db);
         if($this->f3->exists('POST.delete'))
-        {
-            $item->getById($this->f3->get('POST.id'));
-            $itemCode = $item->code;    
-            $item->delete($this->f3->get('POST.id'));
+        {            
+            $itemCode = $item->delete($this->f3->get('POST.id'));
             $this->f3->reroute('/item/success/Item '.$itemCode.' Deleted');
         }
         else

@@ -22,9 +22,8 @@ class BrandController extends Controller {
         if($this->f3->exists('POST.create'))
         {
             $brand = new Brand($this->db);
-            $brand->add();
-
-            $this->f3->reroute('/brand/success/New Brand Created');
+            $brandCode = $brand->add();
+            $this->f3->reroute('/brand/success/New Brand '.$brandCode.' Created');
         } else
         {
             $this->f3->set('page_head','Create Brand');
@@ -40,9 +39,10 @@ class BrandController extends Controller {
 
         if($this->f3->exists('POST.update'))
         {
-            $brand->edit($this->f3->get('POST.id'));
-            $this->f3->reroute('/brand/success/Brand Updated');
-        } else
+            $brandCode = $brand->edit($this->f3->get('POST.id'));
+            $this->f3->reroute('/brand/success/Brand '.$brandCode.' Updated');
+        } 
+        else
         {
             $brand->getById($this->f3->get('PARAMS.id'));
             $this->f3->set('brand',$brand);
@@ -53,13 +53,21 @@ class BrandController extends Controller {
     }
 
     public function delete()
-    {
-        if($this->f3->exists('PARAMS.id'))
+    {   
+        $brand = new Brand($this->db);
+        if($this->f3->exists('POST.delete'))
+        {            
+            $brandCode = $brand->delete($this->f3->get('POST.id'));
+            $this->f3->reroute('/brand/success/Brand '.$brandCode.' Deleted');
+        }
+        else
         {
-            $brand = new Brand($this->db);
-            $brand->delete($this->f3->get('PARAMS.id'));
+            $brand->getById($this->f3->get('PARAMS.id'));
+            $this->f3->set('brand',$brand);
+            $this->f3->set('page_head','Delete Brand');
+            $this->f3->set('view','brand/delete.htm');
         }
 
-        $this->f3->reroute('/brand/success/Brand Deleted');
+        
     }
 }

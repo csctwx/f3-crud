@@ -14,6 +14,7 @@ class Brand extends DB\SQL\Mapper {
     public function add() {
         $this->copyFrom('POST');        
         $this->save();
+        return $this->code;
     }
 
     public function getById($id) {
@@ -27,9 +28,9 @@ class Brand extends DB\SQL\Mapper {
 
     public function edit($id) {
         $this->load(array('id=?',$id));
-        $this->copyFrom('POST'); 
-        echo "@string";       
+        $this->copyFrom('POST');         
         $this->update();
+        return $this->code;
     }
 
     public function editWithCode($id, $code) {
@@ -41,6 +42,8 @@ class Brand extends DB\SQL\Mapper {
 
     public function delete($id) {
         $this->load(array('id=?',$id));
+        $brandCode = $this->code;
         $this->erase();
+        return $brandCode;
     }
 }

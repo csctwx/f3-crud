@@ -14,6 +14,7 @@ class Extension extends DB\SQL\Mapper {
     public function add() {
         $this->copyFrom('POST');        
         $this->save();
+        return $this->extension;
     }
 
     public function getById($id) {
@@ -29,10 +30,13 @@ class Extension extends DB\SQL\Mapper {
         $this->load(array('id=?',$id));
         $this->copyFrom('POST');        
         $this->update();
+        return $this->extension;
     }
 
     public function delete($id) {
         $this->load(array('id=?',$id));
+        $extension = $this->extension;
         $this->erase();
+        return $extension;
     }
 }

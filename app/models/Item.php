@@ -39,6 +39,8 @@ class Item extends DB\SQL\Mapper {
 
     public function delete($id) {
         $this->load(array('id=?',$id));
+        $itemCode = $this->code;
         $this->erase();
+        return $itemCode;
     }
 }

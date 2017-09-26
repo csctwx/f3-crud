@@ -22,9 +22,8 @@ class ExtensionController extends Controller {
         if($this->f3->exists('POST.create'))
         {
             $extension = new Extension($this->db);
-            $extension->add();
-
-            $this->f3->reroute('/extension/success/New Extension Created');
+            $currentExt = $extension->add();
+            $this->f3->reroute('/extension/success/New Extension '.$currentExt.' Created');
         } else
         {
             $this->f3->set('page_head','Create Extension');
@@ -40,8 +39,8 @@ class ExtensionController extends Controller {
 
         if($this->f3->exists('POST.update'))
         {
-            $extension->edit($this->f3->get('POST.id'));
-            $this->f3->reroute('/extension/success/Extension Updated');
+            $currentExt = $extension->edit($this->f3->get('POST.id'));
+            $this->f3->reroute('/extension/success/Extension '.$currentExt.' Updated');
         } else
         {
             $extension->getById($this->f3->get('PARAMS.id'));
@@ -54,12 +53,17 @@ class ExtensionController extends Controller {
 
     public function delete()
     {
-        if($this->f3->exists('PARAMS.id'))
+        $extension = new Extension($this->db);
+        if($this->f3->exists('POST.id'))
         {
-            $extension = new Extension($this->db);
-            $extension->delete($this->f3->get('PARAMS.id'));
-        }
-
-        $this->f3->reroute('/extension/success/Extension Deleted');
+            $currentExt = $extension->delete($this->f3->get('POST.id'));
+            $this->f3->reroute('/extension/success/Extension '.$currentExt.' Deleted');
+        } else
+        {
+            $extension->getById($this->f3->get('PARAMS.id'));
+            $this->f3->set('extension',$extension);
+            $this->f3->set('page_head','Delete Extension');
+            $this->f3->set('view','extension/delete.htm');
+        }        
     }
 }
