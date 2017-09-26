@@ -22,9 +22,8 @@ class LanguageController extends Controller {
         if($this->f3->exists('POST.create'))
         {
             $language = new Language($this->db);
-            $language->add();
-
-            $this->f3->reroute('/language/success/New Language Created');
+            $curLanguage = $language->add();
+            $this->f3->reroute('/language/success/New Language '.$curLanguage.' Created');
         } else
         {
             $this->f3->set('page_head','Create Language');
@@ -40,8 +39,8 @@ class LanguageController extends Controller {
 
         if($this->f3->exists('POST.update'))
         {
-            $language->edit($this->f3->get('POST.id'));
-            $this->f3->reroute('/language/success/Language Updated');
+            $curLanguage = $language->edit($this->f3->get('POST.id'));
+            $this->f3->reroute('/language/success/Language '.$curLanguage.' Updated');
         } else
         {
             $language->getById($this->f3->get('PARAMS.id'));
@@ -54,12 +53,18 @@ class LanguageController extends Controller {
 
     public function delete()
     {
-        if($this->f3->exists('PARAMS.id'))
+         $language = new Language($this->db);
+        if($this->f3->exists('POST.id'))
+        {           
+            $curLanguage = $language->delete($this->f3->get('POST.id'));
+            $this->f3->reroute('/language/success/Language '.$curLanguage.' Deleted');
+        } 
+        else
         {
-            $language = new Language($this->db);
-            $language->delete($this->f3->get('PARAMS.id'));
-        }
-
-        $this->f3->reroute('/language/success/Language Deleted');
+            $language->getById($this->f3->get('PARAMS.id'));
+            $this->f3->set('language',$language);
+            $this->f3->set('page_head','Delete Language');
+            $this->f3->set('view','language/delete.htm');
+        }        
     }
 }

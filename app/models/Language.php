@@ -14,6 +14,7 @@ class Language extends DB\SQL\Mapper {
     public function add() {
         $this->copyFrom('POST');        
         $this->save();
+        return $this->language;
     }
 
     public function getById($id) {
@@ -29,10 +30,13 @@ class Language extends DB\SQL\Mapper {
         $this->load(array('id=?',$id));
         $this->copyFrom('POST');        
         $this->update();
+        return $this->language;
     }
 
     public function delete($id) {
         $this->load(array('id=?',$id));
+        $curLanguage = $this->language;
         $this->erase();
+        return $curLanguage;
     }
 }

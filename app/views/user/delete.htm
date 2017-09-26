@@ -1,0 +1,33 @@
+<form action="{{ @BASE.'/user/delete' }}" method="post"  class="form-horizontal">
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="username">Username:</label>
+    <div class="col-sm-10">
+      {{ @POST.username }}
+    </div>
+  </div>  
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="role">Role:</label>
+    <div class="col-sm-10">      
+        <repeat group="{{ @roles }}" key="{{ @key }}" value="{{ @role }}">             
+             <check  if="{{@key == @POST.role }}">{{ @role }}</check>             
+        </repeat>              
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="role">Status:</label>
+    <div class="col-sm-10">              
+      <repeat group="{{ @statuses }}" key="{{ @key }}" value="{{ @status }}">           
+          <check  if="{{@key == @POST.status }}">{{ @status }}</check>           
+      </repeat>                
+    </div>
+  </div>  
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+       <input type="hidden" name="id" value="{{ @POST.id }}" />
+       <input type="hidden" name="delete" value="delete" />
+       <a href="{{ @BASE.'/users' }}" class="btn btn-primary">Back To List</a>      
+       <button type="submit" class="btn btn-primary pull-right">Delete</button>
+    </div>
+  </div>
+</form>
+

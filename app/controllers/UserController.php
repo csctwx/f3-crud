@@ -75,7 +75,7 @@ class UserController extends Controller {
         if($this->f3->exists('POST.update'))
         {
             $user->edit($this->f3->get('POST.id'));
-            $this->f3->reroute('user/success/User Updated');
+            $this->f3->reroute('/user/success/User Updated');
         } else
         {
             $user->getById($this->f3->get('PARAMS.id'));            
@@ -97,8 +97,7 @@ class UserController extends Controller {
         } else
         {
             $user->getById($this->f3->get('PARAMS.id'));
-            $this->f3->set('POST.password','');
-            //$this->f3->set('user',$user);
+            $this->f3->set('POST.password','');            
             $this->f3->set('page_head','Reset Password');
             $this->f3->set('view','user/reset.htm');
         }
@@ -127,12 +126,18 @@ class UserController extends Controller {
 
     public function delete()
     {
-        if($this->f3->exists('PARAMS.id'))
+        $user = new User($this->db);
+        if($this->f3->exists('POST.id'))
+        {            
+            $user->delete($this->f3->get('POST.id'));
+            $this->f3->reroute('/user/success/User Deleted');
+        } else
         {
-            $user = new User($this->db);
-            $user->delete($this->f3->get('PARAMS.id'));
+            $user->getById($this->f3->get('PARAMS.id'));            
+            $this->f3->set('page_head','Delete User');
+            $this->f3->set('view','user/delete.htm');
         }
 
-        $this->f3->reroute('/user/success/User Deleted');
+        
     }
 }
