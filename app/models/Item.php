@@ -34,6 +34,7 @@ class Item extends DB\SQL\Mapper {
         $this->load(array('id=?',$id));
         $this->copyFrom('POST');        
         $this->update();
+        return $this->code;
     }
 
     public function delete($id) {
