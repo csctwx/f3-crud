@@ -14,14 +14,18 @@
        data-page-list="[50, 100]"       
        >
     <thead>    
-    <tr class="row">
-            <th data-field="code"  data-sortable="true"  class="col-sm-1">Item Code</th>              
+      <tr class="row">
+            <!-- <th data-field="code"  data-sortable="true"  class="col-sm-1">Item Code</th> -->            
+            <th data-formatter="detailFormatter" class="col-sm-1">Item Code</th>
             <th data-field="description"  data-sortable="true" class="col-sm-3">Description</th>
-            <th data-field="barcode"  data-sortable="true"  class="col-sm-2">UPC</th>         
-            <th data-field="createdate"  data-sortable="true"  class="col-sm-2">Created Date</th> 
-            <th data-field="updatedate"  data-sortable="true"  class="col-sm-2">Updated Date</th>         
-            <check  if="{{ @role != 2 }}" class="col-sm-2">
-                <th data-formatter="operateFormatter">Action</th>
+            <th data-field="barcode"  data-sortable="true"  class="col-sm-1">UPC</th>         
+            <th data-field="createdate"  data-sortable="true"  class="col-sm-1">Created Date</th> 
+            <th data-field="updatedate"  data-sortable="true"  class="col-sm-1">Updated Date</th>         
+            <check  if="{{ @role != 2 }}">
+                <th data-formatter="editFormatter" class="col-sm-1">Edit</th>
+                <th data-formatter="copyFormatter" class="col-sm-1">Item Copy</th>
+                <th data-formatter="upcFormatter" class="col-sm-1">UPC Copy</th>
+                <th data-formatter="deleteFormatter" class="col-sm-1">Delete</th>
             </check>
         </tr>
     </thead>    

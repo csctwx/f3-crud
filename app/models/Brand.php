@@ -26,6 +26,11 @@ class Brand extends DB\SQL\Mapper {
         $this->load(array('name=?', $name));
     }
 
+    public function getByCode($code) {
+        $this->load(array('code=?', $code));
+        return $this->query;
+    }
+
     public function edit($id) {
         $this->load(array('id=?',$id));
         $this->copyFrom('POST');         

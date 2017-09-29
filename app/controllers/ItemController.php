@@ -85,6 +85,92 @@ class ItemController extends Controller {
 
     }
 
+    public function copy()
+    {
+
+        $item = new Item($this->db);
+        // $brand = new Brand($this->db);
+        $upc = new Upc($this->db);
+
+        if($this->f3->exists('POST.copy'))
+        {           
+            
+            $itemCode = $item->add();            
+            $upc->edit($this->f3->get('POST.company'));
+            //$brand->editWithCode($this->f3->get('POST.brand_id'),$this->f3->get('POST.brand_code'));
+            $this->f3->reroute('/item/success/New item '.$itemCode.' Copied');
+        } else
+        {
+            $item->getById($this->f3->get('PARAMS.id'));
+            $this->f3->set('item',$item);
+
+            $dateNow = date("Y-m-d");
+            $this->f3->set('date_now',$dateNow);
+
+            // $this->f3->set('brand',$brand->getByCode($item->brand_code)[0]);
+            $extension = new Extension($this->db);
+            $this->f3->set('extensions',$extension->all());
+            $language = new Language($this->db);
+            $this->f3->set('languages',$language->all());
+            
+            $upcItem = $upc->all()[0];             
+            $upcNumber = $upcItem->company.$upcItem->latest_number;            
+            $upcFull = $upcNumber.Util::generate_checkdigit($upcNumber);            
+            $this->f3->set('upc',$upcFull);            
+            
+            $this->f3->set('company',$upcItem->company);
+            $this->f3->set('latest_number',($upcItem->latest_number+1));
+
+            $this->f3->set('page_head','Copy Item');
+            $this->f3->set('view','item/copy.htm');
+        }
+
+    }
+
+    public function upccopy()
+    {
+
+        $item = new Item($this->db);
+        $brand = new Brand($this->db);
+        // $upc = new Upc($this->db);
+
+        if($this->f3->exists('POST.upccopy'))
+        {           
+            
+            $itemCode = $item->add();            
+            // $upc->edit($this->f3->get('POST.company'));
+            //$brand->editWithCode($this->f3->get('POST.brand_id'),$this->f3->get('POST.brand_code'));
+            $this->f3->reroute('/item/success/New item '.$itemCode.' UPC Copied');
+        } else
+        {
+            $item->getById($this->f3->get('PARAMS.id'));
+            $this->f3->set('item',$item);
+
+            $this->f3->set('brand',$brand->getByCode($item->brand_code)[0]);
+
+            $dateNow = date("Y-m-d");
+            $this->f3->set('date_now',$dateNow);
+
+            // $this->f3->set('brand',$brand->getByCode($item->brand_code)[0]);
+            $extension = new Extension($this->db);
+            $this->f3->set('extensions',$extension->all());
+            $language = new Language($this->db);
+            $this->f3->set('languages',$language->all());
+            
+            // $upcItem = $upc->all()[0];             
+            // $upcNumber = $upcItem->company.$upcItem->latest_number;            
+            // $upcFull = $upcNumber.Util::generate_checkdigit($upcNumber);            
+            // $this->f3->set('upc',$upcFull);            
+            
+            // $this->f3->set('company',$upcItem->company);
+            // $this->f3->set('latest_number',($upcItem->latest_number+1));
+
+            $this->f3->set('page_head','UPC Copy Item');
+            $this->f3->set('view','item/upccopy.htm');
+        }
+
+    }
+
     public function update()
     {
 
@@ -108,6 +194,7 @@ class ItemController extends Controller {
 
     }
 
+
     public function delete()
     {   $item = new Item($this->db);
         if($this->f3->exists('POST.delete'))
@@ -123,6 +210,18 @@ class ItemController extends Controller {
             $this->f3->set('page_head','Delete Item');
             $this->f3->set('view','item/delete.htm');
         }
+        
+    }
+
+    public function detail()
+    {   $item = new Item($this->db);
+       
+        $item->getById($this->f3->get('PARAMS.id'));
+        $this->f3->set('item',$item);           
+
+        $this->f3->set('page_head','Detail Item');
+        $this->f3->set('view','item/detail.htm');
+       
         
     }
 }

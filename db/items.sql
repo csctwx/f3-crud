@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `items` (
   `id` int(11) NOT NULL,
-  `code` varchar(10) DEFAULT NULL,
+  `code` varchar(12) DEFAULT NULL,
   `ncode` varchar(10) NOT NULL,
   `description` text,
   `barcode` varchar(12) DEFAULT NULL,
