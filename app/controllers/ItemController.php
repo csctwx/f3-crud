@@ -135,8 +135,7 @@ class ItemController extends Controller {
         // $upc = new Upc($this->db);
 
         if($this->f3->exists('POST.upccopy'))
-        {           
-            
+        {             
             $itemCode = $item->add();            
             // $upc->edit($this->f3->get('POST.company'));
             //$brand->editWithCode($this->f3->get('POST.brand_id'),$this->f3->get('POST.brand_code'));

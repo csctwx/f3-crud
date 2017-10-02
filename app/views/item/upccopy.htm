@@ -52,7 +52,7 @@
   </div>  
   <div class="form-group"> 
     <div class="col-sm-offset-2 col-sm-10">       
-       <input type="hidden" name="copy" value="upccopy" />
+       <input type="hidden" name="upccopy" value="upccopy" />
        <input type="hidden" class="form-control" id="ncode" name="ncode" value="{{@brand.prefix.@brand.new_number}}">
        <input type="hidden" class="form-control" id="brand_code" name="brand_code" value="{{@item.brand_code}}">       
        <input type="hidden" class="form-control" id="brand_prefix" name="brand_prefix" value="{{@item.brand_prefix}}">
@@ -62,7 +62,7 @@
        <!-- <input type="hidden" class="form-control" id="company" name="company" value="{{@company}}">
        <input type="hidden" class="form-control" id="latest_number" name="latest_number" value="{{@latest_number}}">        -->
        <a href="{{ @BASE.'/items' }}" class="btn btn-primary">Back To List</a>
-       <button type="submit" class="btn btn-primary pull-right">Copy Item</button>
+       <button type="submit" class="btn btn-primary pull-right">UPC Copy Item</button>
     </div>
   </div>
 </form>
