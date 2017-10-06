@@ -15,6 +15,15 @@ class ExtensionController extends Controller {
         $this->f3->set('view','extension/list.htm');
 	}
 
+    public function error()
+    {
+        $extension = new Extension($this->db);
+        $this->f3->set('extensions',$extension->all());
+        $this->f3->set('page_head','Extension List');
+        $this->f3->set('error', $this->f3->get('PARAMS.message'));
+        $this->f3->set('view','extension/list.htm');
+    }
+
     public function create()
     {   if($this->f3->get('role') == 2 ){
           $this->f3->reroute('/extensions');
@@ -22,8 +31,14 @@ class ExtensionController extends Controller {
         if($this->f3->exists('POST.create'))
         {
             $extension = new Extension($this->db);
-            $currentExt = $extension->add();
-            $this->f3->reroute('/extension/success/New Extension '.$currentExt.' Created');
+            $currentExt = $extension->add();            
+            if(is_array($currentExt)){
+                $errInfo = $currentExt[2];
+                $this->f3->reroute('/extension/error/'.$errInfo); 
+            }
+            else{
+                $this->f3->reroute('/extension/success/New Extension '.$currentExt.' Created');
+            }          
         } else
         {
             $this->f3->set('page_head','Create Extension');

@@ -49,6 +49,15 @@ class UserController extends Controller {
         $this->f3->set('view','user/list.htm');
 	}
 
+    public function error()
+    {
+        $user = new User($this->db);
+        $this->f3->set('users',$user->all());
+        $this->f3->set('page_head','User List');
+        $this->f3->set('error', $this->f3->get('PARAMS.message'));
+        $this->f3->set('view','user/list.htm');
+    }
+
     public function create()
     {   if($this->f3->get('role') == 2 ){
           $this->f3->reroute('/');
@@ -56,10 +65,16 @@ class UserController extends Controller {
         if($this->f3->exists('POST.create'))
         {
             $user = new User($this->db);
-            $user->add();
-
-            $this->f3->reroute('/user/success/New User Created');
-        } else
+            $newUser = $user->add();
+            if(is_array($newUser)){
+                $errInfo = $newUser[2];
+                $this->f3->reroute('/user/error/'.$errInfo); 
+            }
+            else{
+                $this->f3->reroute('/user/success/New User '.$newUser.' Created');    
+            }                        
+        } 
+        else
         {
             $this->f3->set('page_head','Create User');
             $this->f3->set('view','user/create.htm');

@@ -13,8 +13,13 @@ class Extension extends DB\SQL\Mapper {
 
     public function add() {
         $this->copyFrom('POST');        
-        $this->save();
-        return $this->extension;
+        try {
+          $this->save();
+          return $this->extension;
+        } catch(\PDOException $e) { 
+          $err=$e->errorInfo;    
+          return $err;
+        }
     }
 
     public function getById($id) {

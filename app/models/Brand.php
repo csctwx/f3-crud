@@ -12,9 +12,14 @@ class Brand extends DB\SQL\Mapper {
     }
 
     public function add() {
-        $this->copyFrom('POST');        
-        $this->save();
-        return $this->code;
+        $this->copyFrom('POST');                
+        try {
+          $this->save();
+          return $this->code;
+        } catch(\PDOException $e) { 
+          $err=$e->errorInfo;    
+          return $err;
+        }
     }
 
     public function getById($id) {

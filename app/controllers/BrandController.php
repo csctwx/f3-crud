@@ -15,6 +15,15 @@ class BrandController extends Controller {
         $this->f3->set('view','brand/list.htm');
 	}
 
+    public function error()
+    {
+        $brand = new Brand($this->db);
+        $this->f3->set('brands',$brand->all());
+        $this->f3->set('page_head','Brand List');
+        $this->f3->set('error', $this->f3->get('PARAMS.message'));
+        $this->f3->set('view','brand/list.htm');
+    }
+
     public function create()
     {   if($this->f3->get('role') == 2 ){
           $this->f3->reroute('/brands');
@@ -22,8 +31,14 @@ class BrandController extends Controller {
         if($this->f3->exists('POST.create'))
         {
             $brand = new Brand($this->db);
-            $brandCode = $brand->add();
-            $this->f3->reroute('/brand/success/New Brand '.$brandCode.' Created');
+            $brandCode = $brand->add();            
+            if(is_array($brandCode)){
+                $errInfo = $brandCode[2];
+                $this->f3->reroute('/brand/error/'.$errInfo); 
+            }
+            else{
+                $this->f3->reroute('/brand/success/New Brand '.$brandCode.' Created');   
+            }            
         } else
         {
             $this->f3->set('page_head','Create Brand');

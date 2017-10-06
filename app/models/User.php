@@ -14,7 +14,13 @@ class User extends DB\SQL\Mapper {
     public function add() {
         $this->copyFrom('POST');
         $this->password = password_hash($this->password, PASSWORD_DEFAULT);
-        $this->save();
+        try {
+          $this->save();
+          return $this->username;
+        } catch(\PDOException $e) {
+          $err=$e->errorInfo;          
+          return $err;
+        }
     }
 
     public function getById($id) {

@@ -17,8 +17,13 @@ class Item extends DB\SQL\Mapper {
 
     public function add() {
         $this->copyFrom('POST');        
-        $this->save();
-        return $this->code;
+        try {
+          $this->save();
+          return $this->code;
+        } catch(\PDOException $e) {
+          $err=$e->errorInfo;          
+          return $err;
+        }
     }
 
     public function getById($id) {

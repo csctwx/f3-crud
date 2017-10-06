@@ -15,6 +15,15 @@ class ItemController extends Controller {
         $this->f3->set('view','item/list.htm');
 	}
 
+    public function error()
+    {
+        $item = new Item($this->db);
+        $this->f3->set('items',$item->all());
+        $this->f3->set('page_head','Item List');
+        $this->f3->set('error', $this->f3->get('PARAMS.message'));
+        $this->f3->set('view','item/list.htm');
+    }
+
     public function data()
     {
         $sort = $this->f3->get('GET.sort');
@@ -24,7 +33,7 @@ class ItemController extends Controller {
 
         $offset = $limit ? $this->f3->get('GET.offset')/$limit : null;        
         $option = $sort ? array('order' => $sort.' '.$order) : null; 
-        $filter = $search ? array('description LIKE ? OR code LIKE ?','%'.$search.'%','%'.$search.'%') : null;
+        $filter = $search ? array('code LIKE ? OR description LIKE ? OR barcode LIKE ? OR createdate LIKE ? OR updatedate LIKE ?','%'.$search.'%','%'.$search.'%','%'.$search.'%','%'.$search.'%','%'.$search.'%') : null;
 
         $item = new Item($this->db);
         $items = $item->page($offset, $limit, $filter, $option);        
@@ -55,11 +64,18 @@ class ItemController extends Controller {
         {
             $item = new Item($this->db);
             $itemCode = $item->add();
+            if(is_array($itemCode)){
+                $errInfo = $itemCode[2];
+                $this->f3->reroute('/item/error/'.$errInfo); 
+            }
+            else{
+                $upc->edit($this->f3->get('POST.company'));
+                $brand->editWithCode($this->f3->get('POST.brand_id'),$this->f3->get('POST.brand_code'));
+                $this->f3->reroute('/item/success/New item '.$itemCode.' Created');
+            }            
             
-            $upc->edit($this->f3->get('POST.company'));
-            $brand->editWithCode($this->f3->get('POST.brand_id'),$this->f3->get('POST.brand_code'));
-            $this->f3->reroute('/item/success/New item '.$itemCode.' Created');
-        } else
+        } 
+        else
         {
             //create model data            
             $this->f3->set('brands',$brand->all());
@@ -94,11 +110,15 @@ class ItemController extends Controller {
 
         if($this->f3->exists('POST.copy'))
         {           
-            
-            $itemCode = $item->add();            
-            $upc->edit($this->f3->get('POST.company'));
-            //$brand->editWithCode($this->f3->get('POST.brand_id'),$this->f3->get('POST.brand_code'));
-            $this->f3->reroute('/item/success/New item '.$itemCode.' Copied');
+            $itemCode = $item->add();                        
+            if(is_array($itemCode)){
+                $errInfo = $itemCode[2];
+                $this->f3->reroute('/item/error/'.$errInfo); 
+            }
+            else{
+                $upc->edit($this->f3->get('POST.company'));            
+                $this->f3->reroute('/item/success/New item '.$itemCode.' Copied');
+            }          
         } else
         {
             $item->getById($this->f3->get('PARAMS.id'));
@@ -136,10 +156,15 @@ class ItemController extends Controller {
 
         if($this->f3->exists('POST.upccopy'))
         {             
-            $itemCode = $item->add();            
-            // $upc->edit($this->f3->get('POST.company'));
-            //$brand->editWithCode($this->f3->get('POST.brand_id'),$this->f3->get('POST.brand_code'));
-            $this->f3->reroute('/item/success/New item '.$itemCode.' UPC Copied');
+            $itemCode = $item->add();
+            if(is_array($itemCode)){
+                $errInfo = $itemCode[2];
+                $this->f3->reroute('/item/error/'.$errInfo); 
+            }
+            else{
+                $this->f3->reroute('/item/success/New item '.$itemCode.' UPC Copied');
+            }          
+
         } else
         {
             $item->getById($this->f3->get('PARAMS.id'));
