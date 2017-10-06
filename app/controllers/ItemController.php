@@ -89,7 +89,7 @@ class ItemController extends Controller {
             $upcFull = $upcNumber.Util::generate_checkdigit($upcNumber);            
             $this->f3->set('upc',$upcFull);
             
-            $dateNow = date("Y-m-d");
+            $dateNow = date("Y-m-d H:i:s");
             $this->f3->set('date_now',$dateNow);
 
             $this->f3->set('company',$upcItem->company);
@@ -124,7 +124,7 @@ class ItemController extends Controller {
             $item->getById($this->f3->get('PARAMS.id'));
             $this->f3->set('item',$item);
 
-            $dateNow = date("Y-m-d");
+            $dateNow = date("Y-m-d H:i:s");
             $this->f3->set('date_now',$dateNow);
 
             // $this->f3->set('brand',$brand->getByCode($item->brand_code)[0]);
@@ -172,23 +172,13 @@ class ItemController extends Controller {
 
             $this->f3->set('brand',$brand->getByCode($item->brand_code)[0]);
 
-            $dateNow = date("Y-m-d");
+            $dateNow = date("Y-m-d H:i:s");
             $this->f3->set('date_now',$dateNow);
-
-            // $this->f3->set('brand',$brand->getByCode($item->brand_code)[0]);
+            
             $extension = new Extension($this->db);
             $this->f3->set('extensions',$extension->all());
             $language = new Language($this->db);
-            $this->f3->set('languages',$language->all());
-            
-            // $upcItem = $upc->all()[0];             
-            // $upcNumber = $upcItem->company.$upcItem->latest_number;            
-            // $upcFull = $upcNumber.Util::generate_checkdigit($upcNumber);            
-            // $this->f3->set('upc',$upcFull);            
-            
-            // $this->f3->set('company',$upcItem->company);
-            // $this->f3->set('latest_number',($upcItem->latest_number+1));
-
+            $this->f3->set('languages',$language->all());        
             $this->f3->set('page_head','UPC Copy Item');
             $this->f3->set('view','item/upccopy.htm');
         }
