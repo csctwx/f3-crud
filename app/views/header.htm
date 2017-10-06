@@ -62,3 +62,9 @@
                 <strong>{{ @message }}</strong>
             </div>
             </check>
+            <check if="{{ @error }}">
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>{{ @error }}</strong>
+            </div>
+            </check>

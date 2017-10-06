@@ -4,6 +4,7 @@ class Language extends DB\SQL\Mapper {
 
     public function __construct(DB\SQL $db) {
         parent::__construct($db,'languages');
+        $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     }
 
     public function all() {
@@ -13,8 +14,18 @@ class Language extends DB\SQL\Mapper {
 
     public function add() {
         $this->copyFrom('POST');        
-        $this->save();
-        return $this->language;
+        // $this->save();
+        // return $this->language;
+        try {
+          $this->save();
+          return $this->language;
+        } catch(\PDOException $e) {
+          $err=$e->errorInfo;
+          // echo $err[2];//PRIMARY KEY must be unique
+          // print_r($err);
+          // die();
+          return $err;
+        }
     }
 
     public function getById($id) {

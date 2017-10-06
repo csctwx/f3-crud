@@ -53,7 +53,8 @@ INSERT INTO `languages` (`id`, `language`, `description`) VALUES
 -- Indexes for table `languages`
 --
 ALTER TABLE `languages`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `language` (`language`);
 
 --
 -- AUTO_INCREMENT for dumped tables
