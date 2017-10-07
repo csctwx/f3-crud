@@ -1,4 +1,4 @@
-<form id="copy-form"  action="{{ @BASE.'/item/upccopy' }}" method="post"  class="form-horizontal">
+<form id="copy-form"  action="{{ @BASE.'/item/iucopy' }}" method="post"  class="form-horizontal">
   <div class="form-group">
     <label class="control-label col-sm-2" for="brand_code">Brand:</label>
     <div class="col-sm-10">       
@@ -11,7 +11,7 @@
       <select class="form-control" id="extension" name="extension">
         <option value="">-Choose-</option>
         <repeat group="{{ @extensions }}" value="{{ @extension }}">
-             <option value="{{ @extension.extension }}">
+             <option value="{{ @extension.extension }}" <check if="{{@extension.extension == @item.extension}}">selected="selected"</check>>
                {{ @extension.description }}
              </option>
         </repeat>        
@@ -24,8 +24,8 @@
       <select class="form-control" id="language" name="language">
         <option value="">-Choose-</option>
         <repeat group="{{ @languages }}" value="{{ @language }}">
-             <option value="{{ @language.language }}">
-                {{ @language.description }}
+             <option value="{{ @language.language }}"  <check if="{{@language.language == @item.language}}">selected="selected"</check>>
+               {{ @language.description }}
              </option>
         </repeat>        
       </select>      
@@ -40,8 +40,7 @@
   <div class="form-group">
     <label class="control-label col-sm-2" for="code">Item Code:</label>
     <div class="col-sm-10">      
-      <input type="text" class="form-control" id="code" name="code" value="{{@brand.prefix.@brand.new_number}}" readonly="readonly">
-      
+      <input type="text" class="form-control" id="code" name="code" value="{{@item.code}}" readonly="readonly">
     </div>
   </div>
   <div class="form-group">
@@ -52,14 +51,14 @@
   </div>  
   <div class="form-group"> 
     <div class="col-sm-offset-2 col-sm-10">       
-       <input type="hidden" name="upccopy" value="upccopy" />
-       <input type="hidden" class="form-control" id="ncode" name="ncode" value="{{@brand.prefix.@brand.new_number}}">
-       <input type="hidden" class="form-control" id="brand_code" name="brand_code" value="{{@item.brand_code}}">       
+       <input type="hidden" name="iucopy" value="iucopy" />
+       <input type="hidden" class="form-control" id="ncode" name="ncode" value="{{@item.ncode}}">
+       <input type="hidden" class="form-control" id="brand_code" name="brand_code" value="{{@item.brand_code}}">
        <input type="hidden" class="form-control" id="brand_prefix" name="brand_prefix" value="{{@item.brand_prefix}}">
        <input type="hidden" class="form-control" id="createdate" name="createdate" value="{{@date_now}}">
        <input type="hidden" class="form-control" id="updatedate" name="updatedate" value="{{@date_now}}">
        <a href="{{ @BASE.'/items' }}" class="btn btn-primary">Back To List</a>
-       <button type="submit" class="btn btn-primary pull-right">UPC Copy</button>
+       <button type="submit" class="btn btn-primary pull-right">IU Copy</button>
     </div>
   </div>
 </form>

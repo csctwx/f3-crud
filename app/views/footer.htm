@@ -1,12 +1,12 @@
 
         </div>    
     </body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>        
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>  
-   <!--  <script src="../../ui/js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>   -->
+    <script src="../../ui/js/jquery.min.js"></script>
     <script src="../../ui/js/bootstrap.min.js"></script>        
-    <script src="../../ui/js/bootstrapValidator.min.js"></script>   -->
+    <script src="../../ui/js/bootstrapValidator.min.js"></script>  
     <script src="../../ui/js/bootstrap-table.js"></script>
     <script src="../../ui/js/upc.js"></script>
     <script type="text/javascript">
@@ -44,6 +44,16 @@
 		  if("{{ @role}}" != 2){
 		    return [
 		          '<a href="{{ @BASE }}/item/upccopy/', row.id ,'"><span class="glyphicon glyphicon-share" aria-hidden="true"></span></a>'
+		      ].join('');
+		  }                
+		  else {
+		    return '';
+		  }
+		}
+		function iucopyFormatter(value, row, index) {
+		  if("{{ @role}}" != 2){
+		    return [
+		          '<a href="{{ @BASE }}/item/iucopy/', row.id ,'"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></a>'
 		      ].join('');
 		  }                
 		  else {

@@ -104,15 +104,14 @@ class ItemController extends Controller {
     public function copy()
     {
 
-        $item = new Item($this->db);
-        // $brand = new Brand($this->db);
+        $item = new Item($this->db);        
         $upc = new Upc($this->db);
 
         if($this->f3->exists('POST.copy'))
         {           
             $itemCode = $item->add();                        
             if(is_array($itemCode)){
-                $errInfo = $itemCode[2];
+                $errInfo = str_replace("code","Item Code",$itemCode[2]); 
                 $this->f3->reroute('/item/error/'.$errInfo); 
             }
             else{
@@ -123,25 +122,19 @@ class ItemController extends Controller {
         {
             $item->getById($this->f3->get('PARAMS.id'));
             $this->f3->set('item',$item);
-
             $dateNow = date("Y-m-d H:i:s");
             $this->f3->set('date_now',$dateNow);
-
-            // $this->f3->set('brand',$brand->getByCode($item->brand_code)[0]);
             $extension = new Extension($this->db);
             $this->f3->set('extensions',$extension->all());
             $language = new Language($this->db);
             $this->f3->set('languages',$language->all());
-            
             $upcItem = $upc->all()[0];             
             $upcNumber = $upcItem->company.$upcItem->latest_number;            
             $upcFull = $upcNumber.Util::generate_checkdigit($upcNumber);            
-            $this->f3->set('upc',$upcFull);            
-            
+            $this->f3->set('upc',$upcFull); 
             $this->f3->set('company',$upcItem->company);
             $this->f3->set('latest_number',($upcItem->latest_number+1));
-
-            $this->f3->set('page_head','Copy Item');
+            $this->f3->set('page_head','Item Copy');
             $this->f3->set('view','item/copy.htm');
         }
 
@@ -149,16 +142,13 @@ class ItemController extends Controller {
 
     public function upccopy()
     {
-
         $item = new Item($this->db);
-        $brand = new Brand($this->db);
-        // $upc = new Upc($this->db);
-
+        $brand = new Brand($this->db);        
         if($this->f3->exists('POST.upccopy'))
         {             
             $itemCode = $item->add();
             if(is_array($itemCode)){
-                $errInfo = $itemCode[2];
+                $errInfo = str_replace("code","Item Code",$itemCode[2]); 
                 $this->f3->reroute('/item/error/'.$errInfo); 
             }
             else{
@@ -169,27 +159,53 @@ class ItemController extends Controller {
         {
             $item->getById($this->f3->get('PARAMS.id'));
             $this->f3->set('item',$item);
-
             $this->f3->set('brand',$brand->getByCode($item->brand_code)[0]);
-
             $dateNow = date("Y-m-d H:i:s");
-            $this->f3->set('date_now',$dateNow);
-            
+            $this->f3->set('date_now',$dateNow);            
             $extension = new Extension($this->db);
             $this->f3->set('extensions',$extension->all());
             $language = new Language($this->db);
             $this->f3->set('languages',$language->all());        
-            $this->f3->set('page_head','UPC Copy Item');
+            $this->f3->set('page_head','UPC Copy From '.$item->code);
             $this->f3->set('view','item/upccopy.htm');
+        }
+
+    }
+
+    public function iucopy()
+    {
+        $item = new Item($this->db);
+        $brand = new Brand($this->db);        
+        if($this->f3->exists('POST.iucopy'))
+        {             
+            $itemCode = $item->add();
+            if(is_array($itemCode)){
+                $errInfo = str_replace("code","Item Code",$itemCode[2]);                
+                $this->f3->reroute('/item/error/'.$errInfo); 
+            }
+            else{
+                $this->f3->reroute('/item/success/New item '.$itemCode.' IU Copied');
+            }          
+
+        } else
+        {
+            $item->getById($this->f3->get('PARAMS.id'));
+            $this->f3->set('item',$item);
+            $dateNow = date("Y-m-d H:i:s");
+            $this->f3->set('date_now',$dateNow);            
+            $extension = new Extension($this->db);
+            $this->f3->set('extensions',$extension->all());
+            $language = new Language($this->db);
+            $this->f3->set('languages',$language->all());        
+            $this->f3->set('page_head','IU Copy');
+            $this->f3->set('view','item/iucopy.htm');
         }
 
     }
 
     public function update()
     {
-
         $item = new Item($this->db);
-
         if($this->f3->exists('POST.update'))
         {            
             $itemCode = $item->edit($this->f3->get('POST.id'));
@@ -210,7 +226,8 @@ class ItemController extends Controller {
 
 
     public function delete()
-    {   $item = new Item($this->db);
+    {   
+        $item = new Item($this->db);
         if($this->f3->exists('POST.delete'))
         {            
             $itemCode = $item->delete($this->f3->get('POST.id'));
@@ -228,14 +245,11 @@ class ItemController extends Controller {
     }
 
     public function detail()
-    {   $item = new Item($this->db);
-       
+    {   
+        $item = new Item($this->db);
         $item->getById($this->f3->get('PARAMS.id'));
-        $this->f3->set('item',$item);           
-
+        $this->f3->set('item',$item);
         $this->f3->set('page_head','Detail Item');
         $this->f3->set('view','item/detail.htm');
-       
-        
     }
 }

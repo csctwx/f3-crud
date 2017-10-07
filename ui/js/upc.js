@@ -56,16 +56,7 @@ $(document).ready(function() {
       var item_number = ncode + extension + language;   
       console.log(item_number);            
       $("#code").val(item_number);       
-    });
-
-    $("#upccopy-form #extension,#upccopy-form #language").change(function() {   console.log('test');   
-      var ncode = $("#ncode").val();
-      var extension = $("#extension").val();              
-      var language = $("#language").val();
-      var item_number = ncode + extension + language;   
-      console.log(item_number);            
-      $("#code").val(item_number);       
-    });
+    });    
 
     if($("#item-table").length){
       setInterval(function(){
