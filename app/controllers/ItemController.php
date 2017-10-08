@@ -152,6 +152,7 @@ class ItemController extends Controller {
                 $this->f3->reroute('/item/error/'.$errInfo); 
             }
             else{
+                $brand->editWithCode($this->f3->get('POST.brand_id'),$this->f3->get('POST.brand_code'));
                 $this->f3->reroute('/item/success/New item '.$itemCode.' UPC Copied');
             }          
 

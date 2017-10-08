@@ -54,10 +54,13 @@
     <div class="col-sm-offset-2 col-sm-10">       
        <input type="hidden" name="upccopy" value="upccopy" />
        <input type="hidden" class="form-control" id="ncode" name="ncode" value="{{@brand.prefix.@brand.new_number}}">
-       <input type="hidden" class="form-control" id="brand_code" name="brand_code" value="{{@item.brand_code}}">       
+       <input type="hidden" class="form-control" id="brand_code" name="brand_code" value="{{@item.brand_code}}">    
        <input type="hidden" class="form-control" id="brand_prefix" name="brand_prefix" value="{{@item.brand_prefix}}">
        <input type="hidden" class="form-control" id="createdate" name="createdate" value="{{@date_now}}">
        <input type="hidden" class="form-control" id="updatedate" name="updatedate" value="{{@date_now}}">
+
+       <input type="hidden" class="form-control" id="brand_id" name="brand_id" value="{{@brand.id}}">
+       <input type="hidden" class="form-control" id="new_number" name="new_number" value="{{@brand.new_number+1}}">
        <a href="{{ @BASE.'/items' }}" class="btn btn-primary">Back To List</a>
        <button type="submit" class="btn btn-primary pull-right">UPC Copy</button>
     </div>
