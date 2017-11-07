@@ -18,8 +18,12 @@
        >
     <thead>    
       <tr class="row">
-            <!-- <th data-field="code"  data-sortable="true"  class="col-sm-1">Item Code</th> -->            
-            <th data-formatter="detailFormatter" data-sortable="true" class="col-sm-1">Item Code</th>
+            <check  if="{{ @role != 2 }}">              
+              <th data-formatter="detailFormatter" data-sortable="true" class="col-sm-1">Item Code</th>
+            </check>
+            <check  if="{{ @role == 2 }}">              
+              <th data-field="code" data-sortable="true" class="col-sm-1">Item Code</th>
+            </check>
             <th data-field="description"  data-sortable="true" class="col-sm-3">Description</th>
             <th data-field="barcode"  data-sortable="true"  class="col-sm-1">UPC</th>         
             <th data-field="createdate"  data-sortable="true"  class="col-sm-1">Created Date</th> 
