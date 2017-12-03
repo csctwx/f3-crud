@@ -29,6 +29,7 @@ UPDATE `items` SET `ncode`=LEFT(ncode,length(ncode)-2), `extension`='C4'  WHERE 
 UPDATE `items` SET `ncode`=LEFT(ncode,length(ncode)-2), `extension`='C6'  WHERE `ncode` LIKE '%C6';
 UPDATE `items` SET `ncode`=LEFT(ncode,length(ncode)-2), `extension`='C8'  WHERE `ncode` LIKE '%C8';
 UPDATE `items` SET `ncode`=LEFT(ncode,length(ncode)-2), `extension`='CP'  WHERE `ncode` LIKE '%CP';
+UPDATE `items` SET `ncode`=LEFT(ncode,length(ncode)-1), `extension`='D'  WHERE `ncode` LIKE '%D';
 UPDATE `items` SET `ncode`=LEFT(ncode,length(ncode)-3), `extension`='DIS'  WHERE `ncode` LIKE '%DIS';
 UPDATE `items` SET `ncode`=LEFT(ncode,length(ncode)-1), `extension`='F'  WHERE `ncode` LIKE '%F';
 UPDATE `items` SET `ncode`=LEFT(ncode,length(ncode)-1), `extension`='G'  WHERE `ncode` LIKE '%G';

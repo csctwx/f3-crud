@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2017 at 02:59 AM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.8
+-- Generation Time: Dec 03, 2017 at 02:20 AM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -47,13 +47,14 @@ INSERT INTO `extensions` (`id`, `extension`, `description`) VALUES
 (6, 'C6', 'Case Pack 6'),
 (7, 'C8', 'Case Pack 8'),
 (8, 'CP', 'Club Pack'),
-(9, 'DIS', 'Display'),
-(10, 'F', 'Kraft Mailer'),
-(11, 'G', 'PDQ'),
-(12, 'IM', 'Imaginarium'),
-(13, 'IT', 'Its magical'),
-(14, 'K', 'Bulk'),
-(15, 'T', 'Theme Item UPC');
+(9, 'D', 'Duplicate item new UPC'),
+(10, 'DIS', 'Display'),
+(11, 'F', 'Kraft Mailer'),
+(12, 'G', 'PDQ'),
+(13, 'IM', 'Imaginarium'),
+(14, 'IT', 'Its magical'),
+(15, 'K', 'Bulk'),
+(16, 'T', 'Theme item - Sticker new UPC');
 
 --
 -- Indexes for dumped tables
@@ -75,7 +76,7 @@ ALTER TABLE `extensions`
 -- AUTO_INCREMENT for table `extensions`
 --
 ALTER TABLE `extensions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
