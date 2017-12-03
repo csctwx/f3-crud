@@ -27,6 +27,31 @@ $(document).ready(function() {
             }
         }
     });
+    $('#copy-form').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            barcode: {
+                validators: {
+                    notEmpty: {
+                        message: 'The upc code is required'
+                    },
+                    stringLength: {
+                        min: 12,
+                        max: 12,
+                        message: 'The upc code must be 12 characters long'
+                    },
+                    regexp: {
+                        regexp: /^[0-9]+$/,
+                        message: 'The upc code can only consist of number'
+                    }
+                }
+            }
+        }
+    });
     $("#create-form #brand,#create-form #extension,#create-form #language").change(function() {
       var brands = $("#brand").val().split(',');
       var brand_id = brands[0];

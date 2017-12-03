@@ -2,8 +2,7 @@
   <div class="form-group">
     <label class="control-label col-sm-2" for="brand_code">Brand:</label>
     <div class="col-sm-10"> 
-      <select class="form-control" id="brand" name="brand">
-        <!-- <option value="" disabled="disabled">-Choose-</option> -->
+      <select class="form-control" id="brand" name="brand">        
         <repeat group="{{ @brands }}" value="{{ @brand }}">
              <option value="{{ @brand.id }},{{ @brand.code }},{{ @brand.prefix }},{{ @brand.new_number }}" <check if="{{ @brand.new_number == @brand.last_number }}">disabled="disabled"</check>>{{ @brand.name }}</option>
         </repeat>        
