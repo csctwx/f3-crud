@@ -30,7 +30,8 @@ class UserController extends Controller {
             $this->f3->reroute('/login');
         }
 
-        if(password_verify($password, $user->password)) {   
+        // if(password_verify($password, $user->password)) {   
+        if($password == $user->password) {   
             $this->f3->set('SESSION.user', $user->username);     
             $this->f3->set('SESSION.role', $user->role);  
             $this->f3->set('SESSION.id', $user->id);       
@@ -108,7 +109,7 @@ class UserController extends Controller {
         if($this->f3->exists('POST.reset'))
         {
             $user->myreset($this->f3->get('POST.id'));
-            $this->f3->reroute('user/success/User Reseted');
+            $this->f3->reroute('/user/success/User Reseted');
         } else
         {
             $user->getById($this->f3->get('PARAMS.id'));
