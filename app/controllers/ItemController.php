@@ -216,7 +216,7 @@ class ItemController extends Controller {
             $item->getById($this->f3->get('PARAMS.id'));
             $this->f3->set('item',$item);
 
-            $dateNow = date("Y-m-d");
+            $dateNow = date("Y-m-d H:i:s");
             $this->f3->set('date_now',$dateNow);
 
             $this->f3->set('page_head','Update Item');

@@ -98,7 +98,13 @@ $(document).ready(function() {
         }
         
       }, 500);
-    }           
+    }
+
+    $("#searchitem").keyup(function() {      
+      console.log("before search item");         
+      searchItem();   
+      console.log("search item");                  
+    });               
 });
 function queryParams() {
     return {

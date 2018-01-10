@@ -1,7 +1,13 @@
 <ul class="nav navbar-nav sub-nav">  
   <check  if="{{ @role != 2 }}">            
     <li><a href="{{ @BASE.'/item/create' }}" class="btn btn-primary"><i class="icon-edit icon-white"></i>Create</a></li>  
-  </check>
+  </check>    
+  <li style="width: 250px; margin-left: 20px;">
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">Item Code</span>
+      <input type="text" class="form-control" id="searchitem" placeholder="Search" aria-describedby="basic-addon1">
+    </div>
+  </li>
 </ul>
 <table id="item-table" data-toggle="table"       
       
@@ -24,7 +30,7 @@
             <check  if="{{ @role == 12 }}">              
               <th data-field="code" data-sortable="true" class="col-sm-1">Item Code</th>
             </check>
-            <th data-field="description"  data-sortable="true" class="col-sm-3">Description</th>
+            <th data-field="description"  data-sortable="true" data-searchable="false" class="col-sm-3">Description</th>
             <th data-field="barcode"  data-sortable="true"  class="col-sm-1">UPC</th>         
             <th data-field="createdate"  data-sortable="true"  class="col-sm-1">Created Date</th> 
             <th data-field="updatedate"  data-sortable="true"  class="col-sm-1">Updated Date</th>         
