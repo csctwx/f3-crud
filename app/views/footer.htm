@@ -11,7 +11,7 @@
     <script src="../../ui/js/upc.js"></script>
     <script type="text/javascript">
       	function detailFormatter(value, row, index) {
-		    if("{{ @role}}" != 2){
+		    if("{{ @role}}" != 12){
 		      return [
 		            '<a href="{{ @BASE }}/item/detail/', row.id ,'">', row.code ,'</a>'
 		        ].join('');

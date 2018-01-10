@@ -38,13 +38,15 @@
   <div class="form-group">
     <label class="control-label col-sm-2" for="upc"><a href="{{ @BASE.'/items' }}" class="btn btn-primary">Back To List</a></label>
     <div class="col-sm-10">
-       <input type="hidden" name="id" value="{{ @POST.id }}" />
-       <input type="hidden" name="delete" value="delete" />       
+      <check  if="{{ @role != 2 }}">         
+        <input type="hidden" name="id" value="{{ @POST.id }}" />
+        <input type="hidden" name="delete" value="delete" />       
        
-       <a href="{{ @BASE.'/item/update/'.@POST.id }}" class="btn btn-primary">Edit</a>&nbsp;&nbsp;
-       <a href="{{ @BASE.'/item/copy/'.@POST.id }}" class="btn btn-primary">Item Copy</a>&nbsp;&nbsp;
-       <a href="{{ @BASE.'/item/upccopy/'.@POST.id }}" class="btn btn-primary">UPC Copy</a>&nbsp;&nbsp;
-       <a href="{{ @BASE.'/item/iucopy/'.@POST.id }}" class="btn btn-primary">IU Copy</a>
+        <a href="{{ @BASE.'/item/update/'.@POST.id }}" class="btn btn-primary">Edit</a>&nbsp;&nbsp;
+        <a href="{{ @BASE.'/item/copy/'.@POST.id }}" class="btn btn-primary">Item Copy</a>&nbsp;&nbsp;
+        <a href="{{ @BASE.'/item/upccopy/'.@POST.id }}" class="btn btn-primary">UPC Copy</a>&nbsp;&nbsp;
+        <a href="{{ @BASE.'/item/iucopy/'.@POST.id }}" class="btn btn-primary">IU Copy</a>
+      </check>
     </div>
   </div>
 </form>
