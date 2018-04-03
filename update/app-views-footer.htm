@@ -1,0 +1,92 @@
+
+        </div>    
+    </body>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>   -->
+    <script src="../../ui/js/jquery.min.js"></script>
+    <script src="../../ui/js/bootstrap.min.js"></script>        
+    <script src="../../ui/js/bootstrapValidator.min.js"></script>  
+    <script src="../../ui/js/bootstrap-table.js"></script>
+    <script src="../../ui/js/upc.js"></script>
+    <script type="text/javascript">
+      	function detailFormatter(value, row, index) {
+		    if("{{ @role}}" != 12){
+		      return [
+		            '<a href="{{ @BASE }}/item/detail/', row.id ,'">', row.code ,'</a>'
+		        ].join('');
+		    }                
+		    else {
+		      return '';
+		    }
+		}
+		function editFormatter(value, row, index) {
+			if("{{ @role}}" != 2){
+			  return [
+			        '<a href="{{ @BASE }}/item/update/', row.id ,'"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>'
+			    ].join('');
+			}                
+			else {
+			  return '';
+			}
+		}
+		function copyFormatter(value, row, index) {
+		  if("{{ @role}}" != 2){
+		    return [
+		          '<a href="{{ @BASE }}/item/copy/', row.id ,'"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></a>'
+		      ].join('');
+		  }                
+		  else {
+		    return '';
+		  }
+		}
+		function upcFormatter(value, row, index) {
+		  if("{{ @role}}" != 2){
+		    return [
+		          '<a href="{{ @BASE }}/item/upccopy/', row.id ,'"><span class="glyphicon glyphicon-share" aria-hidden="true"></span></a>'
+		      ].join('');
+		  }                
+		  else {
+		    return '';
+		  }
+		}
+		function iucopyFormatter(value, row, index) {
+		  if("{{ @role}}" != 2){
+		    return [
+		          '<a href="{{ @BASE }}/item/iucopy/', row.id ,'"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></a>'
+		      ].join('');
+		  }                
+		  else {
+		    return '';
+		  }
+		}
+		function deleteFormatter(value, row, index) {
+		  if("{{ @role}}" != 2){
+		    return [                    
+		          '<a href="{{ @BASE}}','/item/delete/', row.id,'"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span></a>'
+		      ].join('');
+		  }                
+		  else {
+		    return '';
+		  }
+		}
+
+		function searchItem() {
+		    var input, filter, table, tr, td, i;
+		    input = document.getElementById("searchitem");
+		    filter = input.value.toUpperCase();
+		    table = document.getElementById("item-table");
+		    tr = table.getElementsByTagName("tr");
+		    for (i = 0; i < tr.length; i++) {
+		        td = tr[i].getElementsByTagName("td")[0];
+		         if (td) {
+		          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+		          tr[i].style.display = "";
+		          } else {
+		          tr[i].style.display = "none";
+		       }
+		     }       
+		   }
+		}
+	</script>    
+</html>

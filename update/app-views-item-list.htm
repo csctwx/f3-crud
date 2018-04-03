@@ -1,0 +1,46 @@
+<ul class="nav navbar-nav sub-nav">  
+  <check  if="{{ @role != 2 }}">            
+    <li><a href="{{ @BASE.'/item/create' }}" class="btn btn-primary"><i class="icon-edit icon-white"></i>Create</a></li>  
+  </check>    
+  <li style="width: 250px; margin-left: 20px;">
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">Item Code</span>
+      <input type="text" class="form-control" id="searchitem" placeholder="Search" aria-describedby="basic-addon1">
+    </div>
+  </li>
+</ul>
+<table id="item-table" data-toggle="table"       
+      
+       data-pagination="true"
+       data-search="true"       
+       class="table table-striped"
+       data-url="{{ @BASE.'/items/data'}}"       
+       data-side-pagination="server" 
+       data-page-size="50"      
+       data-page-list="[50, 100]"  
+       data-height="1000"     
+       data-sort-name="updatedate"
+       data-sort-order="desc"
+       >
+    <thead>    
+      <tr class="row">
+            <check  if="{{ @role != 12 }}">              
+              <th data-formatter="detailFormatter" data-sortable="true" class="col-sm-1">Item Code</th>
+            </check>
+            <check  if="{{ @role == 12 }}">              
+              <th data-field="code" data-sortable="true" class="col-sm-1">Item Code</th>
+            </check>
+            <th data-field="description"  data-sortable="true" data-searchable="false" class="col-sm-3">Description</th>
+            <th data-field="barcode"  data-sortable="true"  class="col-sm-1">UPC</th>         
+            <th data-field="createdate"  data-sortable="true"  class="col-sm-1">Created Date</th> 
+            <th data-field="updatedate"  data-sortable="true"  class="col-sm-1">Updated Date</th>         
+            <check  if="{{ @role != 2 }}">
+                <th data-formatter="editFormatter" class="col-sm-1">Edit</th>
+                <th data-formatter="copyFormatter" class="col-sm-1">Item Copy</th>
+                <th data-formatter="upcFormatter" class="col-sm-1">UPC Copy</th>
+                <th data-formatter="iucopyFormatter" class="col-sm-1">IU Copy</th>
+                <th data-formatter="deleteFormatter" class="col-sm-1">Delete</th>
+            </check>
+        </tr>
+    </thead>    
+</table>
